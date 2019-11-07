@@ -56,4 +56,15 @@ public class Club implements Comparator<Club>{
 	public int compare(Club c, Club c1) {
 		return c.points-c1.points;
 	}
+
+	@Override
+	public String toString() {
+		return "Club [name=" + name + ", points=" + points + "]";
+	}
+	
+	public int compareBynames(Club e) {
+		return name.compareTo(e.getName());
+	}
+	
+	
 }

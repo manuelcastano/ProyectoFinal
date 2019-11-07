@@ -289,4 +289,97 @@ public class League {
 			}
 		}
 	}
+	
+	//bySeleccion
+	public void orderClubsBynames() {
+		
+			for(int i = 0; i < clubs.size()-1; i++) {
+				Club less = clubs.get(i);
+				int aux= i;
+				for(int j = i+1; j < clubs.size(); j++) {
+					if(less.compareBynames(clubs.get(j)) > 0) {
+						less = clubs.get(j);
+						aux = j;
+					}
+				}
+				Club temp = clubs.get(i);
+				clubs.set(i, less);
+				clubs.set(aux, temp);
+			}
+		}
+	
+	
+	//Binario
+	public Club searchClub(String nameClub) {
+		boolean finded = false;
+		Club club = null;
+		int star = 0;
+		int end = clubs.size()-1;
+		while(star <= end && ! finded) {
+			
+			int middle = (star + end)/2;
+			
+			if (clubs.get(middle).getName().equals(nameClub)) {
+				club = clubs.get(middle);
+				finded =true;
+			}else if (stadium.get(middle).getName().compareTo(nameClub)>0) {
+			
+				end = middle -1;
+		
+			}else {
+				
+				star= middle+1;
+			}
+		}	
+		return club;
+	}
+	
+	
+	//Binario
+	public Stadium searchEstadium(String name) {
+		boolean finded = false;
+		Stadium stadiums = null;
+		int star = 0;
+		int end = stadium.size()-1;
+		while(star <= end && ! finded) {
+			
+			int middle = (star + end)/2;
+			
+			if (stadium.get(middle).getName().equals(name)) {
+				stadiums = stadium.get(middle);
+				finded =true;
+			}else if (stadium.get(middle).getName().compareTo(name)>0) {
+				end = middle -1;
+			}else {	
+				star= middle+1;
+			}
+		}	
+		return stadiums;
+	}
+	
+	//recursivo
+	public Ball searchBall (String idBall) {
+		
+		if (firstBall != null) {
+			return firstBall.searchBall(idBall);
+		}else {
+			return null;
+		}
+	}
+	
+	//recursivo
+	public Ball searchBallByBrand (String color) {
+		
+		if (firstBall != null) {
+			return firstBall.searchBallByColor(color);
+		}else {
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
+	
 }

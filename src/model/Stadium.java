@@ -36,6 +36,11 @@ public class Stadium {
 	public void setArea(int area) {
 		this.area = area;
 	}
+
+	@Override
+	public String toString() {
+		return "Stadium [name=" + name + ", capacity=" + capacity + ", area=" + area + "]";
+	}
 	
 	
 	
