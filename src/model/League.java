@@ -29,9 +29,13 @@ public class League {
 	
 	//Constructor
 	
-	public League() {
+	public League() throws IOException, ElementExistException, ClassNotFoundException {
 		clubs = new ArrayList<Club>();
 		stadium = new ArrayList<Stadium>();
+		loadClubs();
+		loadStadiums();
+		loadBalls();
+		loadReferees();
 	}
 
 	public ArrayList<Club> getClubs() {
@@ -76,7 +80,7 @@ public class League {
 		writeStadiums();
 	}
 	
-	public void addBall(Ball b) throws ElementExist, IOException {
+	public void addBall(Ball b) throws ElementExistException, IOException {
 		if(firstBall == null) {
 			firstBall = b;
 		}
@@ -98,7 +102,7 @@ public class League {
 		writeReferees();
 	}
 	
-	public void loadBalls() throws IOException, ElementExist {
+	public void loadBalls() throws IOException, ElementExistException {
 		File f = new File(BALL_FILE);
 		BufferedReader bw = new BufferedReader(new FileReader(f));
 		String line = "";
@@ -277,109 +281,159 @@ public class League {
 		}
 	}
 	
-	//By burble
+	//By selection
 	public void orderClubsByPoints() {
-		for(int i = clubs.size(); i > 0; i--) {
-			for(int j = 0; j < i-1; j++) {
-				if(clubs.get(i).compare(clubs.get(i), clubs.get(i+1)) > 0) {
-					Club temp = clubs.get(i);
-					clubs.set(j, clubs.get(j+1));
-					clubs.set(j+1, temp);
+		for(int i = 0; i < clubs.size()-1; i++) {
+			Club less = clubs.get(i);
+			int aux= i;
+			for(int j = i+1; j < clubs.size(); j++) {
+				if(less.compare(less, clubs.get(j)) > 0) {
+					less = clubs.get(j);
+					aux = j;
 				}
 			}
+			Club temp = clubs.get(i);
+			clubs.set(i, less);
+			clubs.set(aux, temp);
 		}
 	}
 	
 	//bySeleccion
 	public void orderClubsBynames() {
-		
-			for(int i = 0; i < clubs.size()-1; i++) {
-				Club less = clubs.get(i);
-				int aux= i;
-				for(int j = i+1; j < clubs.size(); j++) {
-					if(less.compareBynames(clubs.get(j)) > 0) {
-						less = clubs.get(j);
-						aux = j;
-					}
+		for(int i = 0; i < clubs.size()-1; i++) {
+			Club less = clubs.get(i);
+			int aux= i;
+			for(int j = i+1; j < clubs.size(); j++) {
+				if(less.compareTo(clubs.get(j)) > 0) {
+					less = clubs.get(j);
+					aux = j;
 				}
-				Club temp = clubs.get(i);
-				clubs.set(i, less);
-				clubs.set(aux, temp);
 			}
+			Club temp = clubs.get(i);
+			clubs.set(i, less);
+			clubs.set(aux, temp);
 		}
+	}
+
 	
-	
-	//Binario
-	public Club searchClub(String nameClub) {
+	//Busqueda binaria
+	public Club searchClubByName(String nameClub) {
 		boolean finded = false;
 		Club club = null;
-		int star = 0;
+		int start = 0;
 		int end = clubs.size()-1;
-		while(star <= end && ! finded) {
-			
-			int middle = (star + end)/2;
-			
+		while(start <= end && ! finded) {
+			int middle = (start + end)/2;
 			if (clubs.get(middle).getName().equals(nameClub)) {
 				club = clubs.get(middle);
 				finded =true;
-			}else if (stadium.get(middle).getName().compareTo(nameClub)>0) {
-			
+			}
+			else if (stadium.get(middle).getName().compareTo(nameClub)>0) {
 				end = middle -1;
-		
-			}else {
-				
-				star= middle+1;
+			}
+			else {
+				start= middle+1;
 			}
 		}	
 		return club;
 	}
 	
 	
-	//Binario
-	public Stadium searchEstadium(String name) {
+	//Busqueda Binaria
+	public Stadium searchStadiumByName(String name) {
 		boolean finded = false;
 		Stadium stadiums = null;
-		int star = 0;
+		int start = 0;
 		int end = stadium.size()-1;
-		while(star <= end && ! finded) {
-			
-			int middle = (star + end)/2;
-			
+		while(start <= end && ! finded) {
+			int middle = (start + end)/2;
 			if (stadium.get(middle).getName().equals(name)) {
 				stadiums = stadium.get(middle);
 				finded =true;
-			}else if (stadium.get(middle).getName().compareTo(name)>0) {
+			}
+			else if (stadium.get(middle).getName().compareTo(name)>0) {
 				end = middle -1;
-			}else {	
-				star= middle+1;
+			}
+			else {	
+				start= middle+1;
 			}
 		}	
 		return stadiums;
 	}
 	
 	//recursivo
-	public Ball searchBall (String idBall) {
-		
+	public Ball searchBallById(String idBall) {
 		if (firstBall != null) {
-			return firstBall.searchBall(idBall);
-		}else {
+			return firstBall.searchBallById(idBall);
+		}
+		else {
 			return null;
 		}
 	}
 	
 	//recursivo
-	public Ball searchBallByBrand (String color) {
-		
+	public Ball searchBallByColor (String color) {
 		if (firstBall != null) {
 			return firstBall.searchBallByColor(color);
-		}else {
+		}
+		else {
 			return null;
 		}
 	}
 	
+	//insertion
+	public void orderStadiumsByCapacity() {
+		for(int i = 1; i < stadium.size(); i++) {
+			for(int j = 1; j > 0 && (stadium.get(j-1).compareTo(stadium.get(j))) > 0; j--){
+				Stadium temp = stadium.get(j);
+				stadium.set(j, stadium.get(j-1));
+				stadium.set(j-1, temp);
+			}
+		}
+	}
 	
+	//insertion
+	public void orderStadiumsByArea() {
+		for(int i = 1; i < stadium.size(); i++) {
+			for(int j = 1; j > 0 && (stadium.get(j-1).compare(stadium.get(j-1), stadium.get(j))) > 0; j--){
+				Stadium temp = stadium.get(j);
+				stadium.set(j, stadium.get(j-1));
+				stadium.set(j-1, temp);
+			}
+		}
+	}
 	
+	public void orderPlayersByGoals() {
+		for(int i = 0; i < clubs.size(); i++) {
+			clubs.get(i).orderPlayersByGoals();
+		}
+	}
 	
+	public void orderPlayersByAssists() {
+		for(int i = 0; i < clubs.size(); i++) {
+			clubs.get(i).orderPlayersByAssists();
+		}
+	}
 	
+	public Technical searchTechnicalByName(String nameTechnical, String nameClub) {
+		Technical t = null;
+		boolean finded = false;
+		for(int i = 0; i < clubs.size() && !finded; i++) {
+			if(clubs.get(i).getName().equals(nameClub)) {
+				t = clubs.get(i).searchTechnicalByName(nameTechnical);
+			}
+		}
+		return t;
+	}
 	
+	public String searchTechnicalsByPosition(String position, String nameClub) {
+		String msg = "";
+		boolean finded = false;
+		for(int i = 0; i < clubs.size() && !finded; i++) {
+			if(clubs.get(i).getName().equals(nameClub)) {
+				msg = clubs.get(i).searchTechnicalsByPosition(position);
+			}
+		}
+		return msg;
+	}
 }

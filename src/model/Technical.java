@@ -65,4 +65,57 @@ public class Technical extends Person {
             right = right.eliminateTechnical(nameTechnical);
         return this;
     }
+	
+	public Technical searchTechnicalByName(String nameTechnical) {
+		if(getName().equals(nameTechnical)) {
+			return this;
+		}
+		else if(getName().compareTo(nameTechnical) > 0) {
+			if(left != null) {
+				return left.searchTechnicalByName(nameTechnical);
+			}
+			else {
+				return null;
+			}
+		}
+		else {
+			if(right != null) {
+				return right.searchTechnicalByName(nameTechnical);
+			}
+			else {
+				return null;
+			}
+		}
+	}
+	
+	public String searchTechnicalsByPosition(String position) {
+		String msg = "";
+		if(left != null) {
+			msg += left.searchTechnicalsByPosition(position);
+		}
+		if(position.equals("Coach")) {
+			if(this instanceof Coach) {
+				msg += toString();
+			}
+		}
+		else if(position.equals("Technical Assitant")) {
+			if(this instanceof TechnicalAssistant) {
+				msg += toString();
+			}
+		}
+		else if(position.equals("Physical Trainer")) {
+			if(this instanceof PhysicalTrainer) {
+				msg += toString();
+			}
+		}
+		if(right != null) {
+			msg += right.searchTechnicalsByPosition(position);
+		}
+		return msg;
+	}
+
+	@Override
+	public String toString() {
+		return left + "," + right + "," + hoursWorked;
+	}
 }

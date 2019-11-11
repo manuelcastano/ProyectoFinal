@@ -1,6 +1,8 @@
 package model;
 
-public class Player extends Person{
+import java.util.Comparator;
+
+public class Player extends Person implements Comparator<Player>, Comparable<Player>{
 	
 	
 	private int yellowCards;
@@ -68,11 +70,14 @@ public class Player extends Person{
 	public void setPrev(Player prev) {
 		this.prev = prev;
 	}
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public int compare(Player p1, Player p2) {
+		return p1.goals-p2.goals;
+	}
+
+	@Override
+	public int compareTo(Player p) {
+		return assists-p.assists;
+	}
 }

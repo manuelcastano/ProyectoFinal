@@ -56,7 +56,7 @@ public class Ball implements Comparable<Ball>{
 	}
 	
 
-	public void addBall(Ball b) throws ElementExist {
+	public void addBall(Ball b) throws ElementExistException {
 		if(compareTo(b) < 0) {
 			if(right == null) {
 				right = b;
@@ -74,7 +74,7 @@ public class Ball implements Comparable<Ball>{
 			}
 		}
 		else {
-			throw new ElementExist();
+			throw new ElementExistException();
 		}
 	}
 
@@ -120,56 +120,47 @@ public class Ball implements Comparable<Ball>{
     }
 	
 	//recursivo
-	
-	public Ball searchBall(String idBall) {
-		
+	public Ball searchBallById(String idBall) {
 		if (id.compareTo(idBall)==0) {
 			return this;
-		}else if (id.compareTo(idBall) > 0){
-			
+		}
+		else if (id.compareTo(idBall) > 0){
 			if (left != null) {
-				return left.searchBall(idBall);
+				return left.searchBallById(idBall);
 			}else {
 				return null;
 			}
 		}
 		else {
 			if (right != null) {
-				return right.searchBall(idBall);	
+				return right.searchBallById(idBall);	
 			}
 			else {
 				return null;
 			}
-			
 		}
-	
 	}
 	
 	//Recursivo busca por color 
-	 public Ball searchBallByColor(String colorr) {
-		 if (color.compareTo(colorr)==0) {
-				return this;
-			}else if (color.compareTo(colorr) > 0){
-				
-				if (left != null) {
-					return left.searchBallByColor(colorr);
-				}else {
-					return null;
-				}
+	public Ball searchBallByColor(String colorr) {
+		if (color.compareTo(colorr)==0) {
+			return this;
+		}
+		else if (color.compareTo(colorr) > 0){
+			if (left != null) {
+				return left.searchBallByColor(colorr);
 			}
 			else {
-				if (right != null) {
-					return right.searchBallByColor(colorr);	
-				}
-				else {
-					return null;
-				}
-				
+				return null;
 			}
-		
-		 
-	 }
-	
-	
-	
+		}
+		else {
+			if (right != null) {
+				return right.searchBallByColor(colorr);	
+			}
+			else {
+				return null;
+			}
+		}
+	}
 }

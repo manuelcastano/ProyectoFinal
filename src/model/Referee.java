@@ -63,8 +63,6 @@ public class Referee extends Person implements Comparable<Referee>{
 
 	@Override
 	public int compareTo(Referee r) {
-		return getName().compareTo(r.getName());
+		return yellowCards-r.yellowCards;
 	}
-	
-	
 }
