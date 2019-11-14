@@ -234,6 +234,22 @@ public class Club implements Comparator<Club>, Comparable<Club>{
 			return deleted;
 		}
 	
+	public void addTechnical(Technical newTechnical) {
+		
+		if (firstTechnical == null) {
+			firstTechnical = newTechnical;
+		}
+		else {
+			firstTechnical.addTechnical(newTechnical);
+		}
+	
+	}
+	//falta
+	public Technical updateWonGames(String name, int numberWonGames) {
+		
+		return  firstTechnical == null ? null : firstTechnical;
+	}
+	
 	
 	}
 	

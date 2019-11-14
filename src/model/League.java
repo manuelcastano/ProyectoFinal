@@ -526,4 +526,29 @@ public class League {
 		}
 		return finded;
 	}
+	//
+	public boolean addTechnical(String nameClan,Technical technical) {
+		boolean finded = false;
+		for (int i = 0; i<clubs.size() && !finded ;i++) {
+			if (clubs.get(i).getName().equals(nameClan)) {
+				 clubs.get(i).addTechnical(technical);
+				 finded = true;
+			}	
+		}
+		return finded;
+	}
+	//Actualiza el numero de faltas de un arbitro
+	
+	public boolean updateNumberFouls(String nameReferee , int newNumberReferee) {
+		boolean finded = false;
+		Referee actual = firstReferee;
+		while(actual != null && !finded) {
+			if (actual.getName().contentEquals(nameReferee)) {
+				actual.setFouls(newNumberReferee);
+				finded = true;				
+			}
+			actual = actual.getNext();
+		}
+		return finded;
+	}
 }

@@ -42,7 +42,7 @@ public class Technical extends Person {
 	public Technical getMinor( )
     {
         return (left == null) ? this : left.getMinor();
-    }
+    }  
 	
 	public Technical eliminateTechnical( String nameTechnical )
     {
@@ -118,4 +118,28 @@ public class Technical extends Person {
 	public String toString() {
 		return left + "," + right + "," + hoursWorked;
 	}
+
+	public void addTechnical(Technical newTechnical )  {
+		if (compareTo(newTechnical)>0) {	
+			if (left == null) {
+				left = newTechnical;
+			}
+			else {
+				left.addTechnical(newTechnical);
+				}
+		}else if (compareTo(newTechnical)<0) {
+			if (right==null) {
+				right=newTechnical;
+			}else {
+				right.addTechnical(newTechnical);
+			}
+		}		
+	}
+	
+	private int compareTo(Technical newTechnical) {
+		
+		 return this.getId().compareToIgnoreCase(newTechnical.getId());
+	}
+
+	
 }
