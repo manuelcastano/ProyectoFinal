@@ -270,6 +270,32 @@ public class League {
 		}
 	}
 	
+	public void eliminateClub(String nameClub) throws IOException {
+		boolean finded = false;
+		for(int i = 0; i < clubs.size() && ! finded ; i++) {
+			if(clubs.get(i).getName().equals(nameClub)) {
+				File f = new File(CLUB_FILE);
+				File tempFile = new File(f.getAbsolutePath()+".txt");
+				BufferedReader br = new BufferedReader(new FileReader(f));
+		        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+		        String line = null;
+		        while ((line = br.readLine()) != null) {
+		            if (!line.trim().equals(clubs.get(i).toString())) {
+		                pw.println(line);
+		                pw.flush();
+		            }
+		        }
+		        pw.close();
+		        br.close();
+		        f.delete();
+		        tempFile.renameTo(f);
+				clubs.remove(i);
+				finded = true;			
+			}
+		}
+	}
+
+	
 	public void eliminateTechnical(String clubName, String nameTechnical) throws FileNotFoundException, IOException {
 		boolean finded = false;
 		for(int i = 0; i < clubs.size() && !finded; i++) {
@@ -435,5 +461,69 @@ public class League {
 			}
 		}
 		return msg;
+	}
+	
+	public boolean updateNameClub(String nameClub,String newNameClub) {
+		boolean update =false;
+		for (int i = 0; i < clubs.size() && ! update; i++) {
+			if (clubs.get(i).getName().contentEquals(nameClub)) {
+				clubs.get(i).setName(newNameClub);
+				update=true;
+			}	
+		}
+		return update;
+	}
+	
+	//responsability add Palyer
+	public void addPlayer (String nameClub,Player newPlayer) {
+		boolean finded = false;
+		for (int i = 0;i<clubs.size() && !finded ;i ++) {
+			if (clubs.get(i).getName().equals(nameClub)) {
+				clubs.get(i).addPlayer(newPlayer);
+				finded =true;
+			}
+		}
+	}
+	//responsability updateGoalsPlayer
+	public boolean updateNumberGoalsPlayer(String nameClub,String namePlayer,int numberGoals) {
+		boolean finded = false;
+		for (int i = 0; i< clubs.size() && !finded ;i++) {
+			if (clubs.get(i).getName().equals(nameClub)) {
+				clubs.get(i).updateGoalsPlayer(namePlayer, numberGoals);
+				finded =true;
+			}		
+		}
+		return finded;
+	}
+	//Actualiza el tipo del balon
+	public Ball updateTypeBall (String idBall , String newBallType ) {
+		if (firstBall == null) {
+			return null;
+		}
+		else {
+			return firstBall.updateTypeBall(idBall , newBallType);
+		}
+		
+	}
+	//update Name estadium
+	public boolean updateNameStadium(String nameStadium ,String newNameStadium) {
+		boolean finded = false;
+		for (int i = 0 ; i < stadium.size() && !finded  ; i++ ) {
+			if (stadium.get(i).getName().equals(nameStadium)) {
+				stadium.get(i).setName(newNameStadium);
+				finded =true;
+			}
+		}
+		return finded;
+	}
+	public boolean eliminatePlayer(String nameClan,String namePlayer) {
+		boolean finded = false;
+		for (int i = 0 ; i <clubs.size() && !finded ; i++) {
+			if (clubs.get(i).getName().equals(nameClan)) {
+				finded = clubs.get(i).eliminatePlayer(namePlayer);
+				finded = true;
+			}
+		}
+		return finded;
 	}
 }

@@ -163,4 +163,21 @@ public class Ball implements Comparable<Ball>{
 			}
 		}
 	}
+	//Actualiza el tipo del balon
+	public Ball updateTypeBall(String id,String newType) {
+		if (id.compareTo(id)==0) {
+			this.setType(newType);
+			return this;
+		}
+		else if (id.compareTo(id)>0) {
+			return  (left == null) ? null : left.updateTypeBall(id, newType);
+		}
+		else {
+			return (right == null) ? null : right.updateTypeBall(id, newType);
+		}
+	}
+	
+	
+	
+	
 }

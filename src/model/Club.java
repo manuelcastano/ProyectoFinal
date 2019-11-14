@@ -183,4 +183,59 @@ public class Club implements Comparator<Club>, Comparable<Club>{
 			return null;
 		}
 	}
-}
+	
+	public void addPlayer(Player newPlayer) {
+		
+		if (firstPlayer == null) {
+			firstPlayer = newPlayer;
+		}
+		else {
+			newPlayer.setNext(firstPlayer);
+			firstPlayer.setPrev(newPlayer);
+			firstPlayer = newPlayer;
+		}
+	}
+	
+	public void updateGoalsPlayer(String namePlayer ,int numberGoals) {
+		Player actual = firstPlayer;
+		boolean finded = false;
+		while (actual !=null && !finded) {
+			if (actual.getName().equals(namePlayer)) {
+				actual.setGoals(numberGoals);
+				finded = true;
+			}
+			actual = actual.getNext();
+		}
+	}
+	
+	public boolean eliminatePlayer(String namePlayer) {
+		boolean deleted = false;
+		Player actual = firstPlayer;
+		if(firstPlayer != null && firstPlayer.getName().equals(namePlayer)) {
+			firstPlayer = firstPlayer.getNext();
+				if(firstPlayer != null) {
+					firstPlayer.setPrev(null);
+				}
+				deleted = true;
+			}
+			else {
+				while(actual != null && !deleted) {
+					if(actual.getName().equals(namePlayer)) {
+						actual = actual.getPrev();
+						actual.setNext(actual.getNext().getNext());
+					if(actual.getNext() != null) {
+							actual.getNext().setPrev(actual);
+						}
+						deleted = true;
+					}
+					actual = actual.getNext();
+				}
+			}
+			return deleted;
+		}
+	
+	
+	}
+	
+
+
