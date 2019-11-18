@@ -166,34 +166,63 @@ public class Club implements Comparator<Club>, Comparable<Club>{
 		return Players;
 	}
 	
-	public Technical searchTechnicalByName(String nameTechnical) {
+	public Technical searchTechnicalByName(String nameTechnical) throws NotFindedException {
 		if(firstTechnical != null) {
-			return firstTechnical.searchTechnicalByName(nameTechnical);
+			Technical t = firstTechnical.searchTechnicalByName(nameTechnical);
+			if(t == null) {
+				throw new NotFindedException();
+			}
+			else {
+				return t;
+			}
 		}
 		else {
 			return null;
 		}
 	}
 	
-	public String searchTechnicalsByPosition(String position) {
+	public String searchTechnicalsByPosition(String position) throws NotFindedException {
 		if(firstTechnical != null) {
-			return firstTechnical.searchTechnicalsByPosition(position);
+			String msg = firstTechnical.searchTechnicalsByPosition(position);
+			if(msg.equals("")) {
+				throw new NotFindedException();
+			}
+			else {
+				return msg;
+			}
 		}
 		else {
 			return null;
 		}
 	}
 	
-	public void addPlayer(Player newPlayer) {
+	public void addPlayer(Player newPlayer) throws ElementExistException {
 		
 		if (firstPlayer == null) {
 			firstPlayer = newPlayer;
 		}
 		else {
-			newPlayer.setNext(firstPlayer);
-			firstPlayer.setPrev(newPlayer);
-			firstPlayer = newPlayer;
+			if(!playerExist(newPlayer.getId())) {
+				newPlayer.setNext(firstPlayer);
+				firstPlayer.setPrev(newPlayer);
+				firstPlayer = newPlayer;
+			}
+			else {
+				throw new ElementExistException();
+			}
 		}
+	}
+	
+	public boolean playerExist(String idPlayer) {
+		Player actual = firstPlayer;
+		boolean finded = false;
+		while(actual != null && !finded) {
+			if(actual.getId().equals(idPlayer)) {
+				finded = true;
+			}
+			actual = actual.getNext();
+		}
+		return finded;
 	}
 	
 	public void updateGoalsPlayer(String namePlayer ,int numberGoals) {
@@ -208,50 +237,47 @@ public class Club implements Comparator<Club>, Comparable<Club>{
 		}
 	}
 	
-	public boolean eliminatePlayer(String namePlayer) {
+	public boolean eliminatePlayer(String namePlayer) throws EliminateException {
 		boolean deleted = false;
 		Player actual = firstPlayer;
 		if(firstPlayer != null && firstPlayer.getName().equals(namePlayer)) {
 			firstPlayer = firstPlayer.getNext();
-				if(firstPlayer != null) {
-					firstPlayer.setPrev(null);
-				}
-				deleted = true;
+			if(firstPlayer != null) {
+				firstPlayer.setPrev(null);
 			}
-			else {
-				while(actual != null && !deleted) {
-					if(actual.getName().equals(namePlayer)) {
-						actual = actual.getPrev();
-						actual.setNext(actual.getNext().getNext());
-					if(actual.getNext() != null) {
-							actual.getNext().setPrev(actual);
-						}
-						deleted = true;
-					}
-					actual = actual.getNext();
-				}
-			}
-			return deleted;
+			deleted = true;
 		}
+		else {
+			while(actual != null && !deleted) {
+				if(actual.getName().equals(namePlayer)) {
+					actual = actual.getPrev();
+					actual.setNext(actual.getNext().getNext());
+					if(actual.getNext() != null) {
+						actual.getNext().setPrev(actual);
+					}
+					deleted = true;
+				}
+				actual = actual.getNext();
+			}
+		}
+		if(!deleted) {
+			throw new EliminateException();
+		}
+		return deleted;
+	}
 	
-	public void addTechnical(Technical newTechnical) {
-		
+	public void addTechnical(Technical newTechnical) throws ElementExistException {
 		if (firstTechnical == null) {
 			firstTechnical = newTechnical;
 		}
 		else {
 			firstTechnical.addTechnical(newTechnical);
 		}
-	
-	}
-	//falta
-	public Technical updateWonGames(String name, int numberWonGames) {
-		
-		return  firstTechnical == null ? null : firstTechnical;
 	}
 	
-	
-	}
-	
-
-
+	public void updateWonGames(String idTechnical, int numberWonGames) {
+		if(firstTechnical != null) {
+			firstTechnical.updateWonGames(idTechnical, numberWonGames);
+		}
+	}	
+}

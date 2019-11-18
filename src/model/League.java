@@ -70,14 +70,34 @@ public class League {
 		this.firstReferee = firstReferee;
 	}
 	
-	public void addClub(Club c) throws FileNotFoundException, IOException {
-		clubs.add(c);
-		writeClubs();
+	public void addClub(Club c) throws FileNotFoundException, IOException, ElementExistException {
+		if(!clubExist(c.getName())) {
+			clubs.add(c);
+			writeClubs();
+		}
+		else {
+			throw new ElementExistException();
+		}
 	}
 	
-	public void addStadium(Stadium s) throws IOException {
-		stadium.add(s);
-		writeStadiums();
+	public void addStadium(Stadium s) throws IOException, ElementExistException {
+		if(!stadiumExist(s.getName())) {
+			stadium.add(s);
+			writeStadiums();
+		}
+		else {
+			throw new ElementExistException();
+		}
+	}
+	
+	public boolean stadiumExist(String nameStadium) {
+		boolean finded = false;
+		for(int i = 0; i < stadium.size() && !finded; i++) {
+			if(stadium.get(i).getName().equals(nameStadium)) {
+				finded = true;
+			}
+		}
+		return finded;
 	}
 	
 	public void addBall(Ball b) throws ElementExistException, IOException {
@@ -90,16 +110,33 @@ public class League {
 		writeBall(b);
 	}
 	
-	public void addReferee(Referee r) throws IOException {
+	public void addReferee(Referee r) throws IOException, ElementExistException {
 		if(firstReferee == null) {
 			firstReferee = r;
 		}
 		else {
-			r.setNext(firstReferee);
-			firstReferee.setPrev(r);
-			firstReferee = r;
+			if(!refereeExist(r.getName())) {
+				r.setNext(firstReferee);
+				firstReferee.setPrev(r);
+				firstReferee = r;
+			}
+			else {
+				throw new ElementExistException();
+			}
 		}
 		writeReferees();
+	}
+	
+	public boolean refereeExist(String nameReferee) {
+		boolean finded = false;
+		Referee actual = firstReferee;
+		while(actual != null && !finded) {
+			if(actual.getName().equals(nameReferee)) {
+				finded = true;
+			}
+			actual = actual.getNext();
+		}
+		return finded;
 	}
 	
 	public void loadBalls() throws IOException, ElementExistException {
@@ -191,7 +228,7 @@ public class League {
 		bw.close();
 	}
 	
-	public void eliminateReferee(String name) throws IOException {
+	public void eliminateReferee(String name) throws IOException, EliminateException {
 		Referee actual = firstReferee;
 		boolean finded = false;
 		while(actual != null && !finded) {
@@ -221,6 +258,9 @@ public class League {
 			}
 			actual = actual.getNext();
 		}
+		if(!finded) {
+			throw new EliminateException();
+		}
 	}
 	
 	public void eliminateBall(String idBall) throws IOException {
@@ -245,7 +285,7 @@ public class League {
 		}
 	}
 	
-	public void eliminateStadium(String nameStadium) throws IOException {
+	public void eliminateStadium(String nameStadium) throws IOException, EliminateException {
 		boolean finded = false;
 		for(int i = 0; i < stadium.size() && !finded; i++) {
 			if(stadium.get(i).getName().equals(nameStadium)) {
@@ -268,30 +308,22 @@ public class League {
 				finded = true;			
 			}
 		}
+		if(!finded) {
+			throw new EliminateException();
+		}
 	}
 	
-	public void eliminateClub(String nameClub) throws IOException {
+	public void eliminateClub(String nameClub) throws EliminateException, FileNotFoundException, IOException {
 		boolean finded = false;
 		for(int i = 0; i < clubs.size() && ! finded ; i++) {
 			if(clubs.get(i).getName().equals(nameClub)) {
-				File f = new File(CLUB_FILE);
-				File tempFile = new File(f.getAbsolutePath()+".txt");
-				BufferedReader br = new BufferedReader(new FileReader(f));
-		        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
-		        String line = null;
-		        while ((line = br.readLine()) != null) {
-		            if (!line.trim().equals(clubs.get(i).toString())) {
-		                pw.println(line);
-		                pw.flush();
-		            }
-		        }
-		        pw.close();
-		        br.close();
-		        f.delete();
-		        tempFile.renameTo(f);
 				clubs.remove(i);
+				writeClubs();
 				finded = true;			
 			}
+		}
+		if(!finded) {
+			throw new EliminateException();
 		}
 	}
 
@@ -343,7 +375,7 @@ public class League {
 
 	
 	//Busqueda binaria
-	public Club searchClubByName(String nameClub) {
+	public Club searchClubByName(String nameClub) throws NotFindedException {
 		boolean finded = false;
 		Club club = null;
 		int start = 0;
@@ -361,12 +393,15 @@ public class League {
 				start= middle+1;
 			}
 		}	
+		if(!finded) {
+			throw new NotFindedException();
+		}
 		return club;
 	}
 	
 	
 	//Busqueda Binaria
-	public Stadium searchStadiumByName(String name) {
+	public Stadium searchStadiumByName(String name) throws NotFindedException {
 		boolean finded = false;
 		Stadium stadiums = null;
 		int start = 0;
@@ -383,14 +418,23 @@ public class League {
 			else {	
 				start= middle+1;
 			}
-		}	
+		}
+		if(!finded) {
+			throw new NotFindedException();
+		}
 		return stadiums;
 	}
 	
 	//recursivo
-	public Ball searchBallById(String idBall) {
+	public Ball searchBallById(String idBall) throws NotFindedException {
 		if (firstBall != null) {
-			return firstBall.searchBallById(idBall);
+			Ball b = firstBall.searchBallById(idBall);
+			if(b == null) {
+				throw new NotFindedException();
+			}
+			else {
+				return b;
+			}
 		}
 		else {
 			return null;
@@ -398,9 +442,15 @@ public class League {
 	}
 	
 	//recursivo
-	public Ball searchBallByColor (String color) {
+	public Ball searchBallByColor (String color) throws NotFindedException {
 		if (firstBall != null) {
-			return firstBall.searchBallByColor(color);
+			Ball b = firstBall.searchBallByColor(color);
+			if(b == null) {
+				throw new NotFindedException();
+			}
+			else {
+				return b;
+			}
 		}
 		else {
 			return null;
@@ -441,7 +491,7 @@ public class League {
 		}
 	}
 	
-	public Technical searchTechnicalByName(String nameTechnical, String nameClub) {
+	public Technical searchTechnicalByName(String nameTechnical, String nameClub) throws NotFindedException {
 		Technical t = null;
 		boolean finded = false;
 		for(int i = 0; i < clubs.size() && !finded; i++) {
@@ -452,7 +502,7 @@ public class League {
 		return t;
 	}
 	
-	public String searchTechnicalsByPosition(String position, String nameClub) {
+	public String searchTechnicalsByPosition(String position, String nameClub) throws NotFindedException {
 		String msg = "";
 		boolean finded = false;
 		for(int i = 0; i < clubs.size() && !finded; i++) {
@@ -474,8 +524,8 @@ public class League {
 		return update;
 	}
 	
-	//responsability add Palyer
-	public void addPlayer (String nameClub,Player newPlayer) {
+	//responsability add player
+	public void addPlayer (String nameClub,Player newPlayer) throws ElementExistException {
 		boolean finded = false;
 		for (int i = 0;i<clubs.size() && !finded ;i ++) {
 			if (clubs.get(i).getName().equals(nameClub)) {
@@ -516,18 +566,18 @@ public class League {
 		}
 		return finded;
 	}
-	public boolean eliminatePlayer(String nameClan,String namePlayer) {
+	public boolean eliminatePlayer(String nameClan,String namePlayer) throws EliminateException, FileNotFoundException, IOException {
 		boolean finded = false;
 		for (int i = 0 ; i <clubs.size() && !finded ; i++) {
 			if (clubs.get(i).getName().equals(nameClan)) {
 				finded = clubs.get(i).eliminatePlayer(namePlayer);
-				finded = true;
+				writeClubs();
 			}
 		}
 		return finded;
 	}
 	//
-	public boolean addTechnical(String nameClan,Technical technical) {
+	public boolean addTechnical(String nameClan,Technical technical) throws ElementExistException {
 		boolean finded = false;
 		for (int i = 0; i<clubs.size() && !finded ;i++) {
 			if (clubs.get(i).getName().equals(nameClan)) {
@@ -550,5 +600,15 @@ public class League {
 			actual = actual.getNext();
 		}
 		return finded;
+	}
+	
+	public boolean clubExist(String nameClub) {
+		boolean exist = false;
+		for(int i = 0; i < clubs.size() && !exist; i++) {
+			if(clubs.get(i).getName().equals(nameClub)) {
+				exist = true;
+			}
+		}
+		return exist;
 	}
 }

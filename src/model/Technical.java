@@ -119,7 +119,7 @@ public class Technical extends Person {
 		return left + "," + right + "," + hoursWorked;
 	}
 
-	public void addTechnical(Technical newTechnical )  {
+	public void addTechnical(Technical newTechnical ) throws ElementExistException  {
 		if (compareTo(newTechnical)>0) {	
 			if (left == null) {
 				left = newTechnical;
@@ -127,19 +127,38 @@ public class Technical extends Person {
 			else {
 				left.addTechnical(newTechnical);
 				}
-		}else if (compareTo(newTechnical)<0) {
+		}
+		else if (compareTo(newTechnical)<0) {
 			if (right==null) {
 				right=newTechnical;
-			}else {
+			}
+			else {
 				right.addTechnical(newTechnical);
 			}
-		}		
+		}
+		else {
+			throw new ElementExistException();
+		}
 	}
 	
 	private int compareTo(Technical newTechnical) {
-		
-		 return this.getId().compareToIgnoreCase(newTechnical.getId());
+		 return getId().compareTo(newTechnical.getId());
 	}
 
-	
+	public void updateWonGames(String idTechnical, int numberWonGames) {
+		if(this instanceof Coach && getId().equals(idTechnical)) {
+			Coach c = (Coach) this;
+			c.setWonGames(numberWonGames);
+		}
+		else if(getId().compareTo(idTechnical) > 0) {
+			if(left != null) {
+				left.updateWonGames(idTechnical, numberWonGames);
+			}
+		}
+		else if(getId().compareTo(idTechnical) < 0) {
+			if(right != null) {
+				right.updateWonGames(idTechnical, numberWonGames);
+			}
+		}
+	}	
 }
