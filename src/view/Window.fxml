@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WindowController">
+   <top>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="600.0" text="Premier League" textAlignment="CENTER" textFill="#c31111" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <AnchorPane prefHeight="440.0" prefWidth="630.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="27.0" layoutY="35.0" prefHeight="72.0" prefWidth="88.0" text="¿What do you want to add?" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="mb" layoutX="152.0" layoutY="53.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <AnchorPane fx:id="operations" layoutX="293.0" layoutY="54.0" prefHeight="379.0" prefWidth="331.0" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
