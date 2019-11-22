@@ -29,7 +29,7 @@
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
-            <AnchorPane fx:id="operations" layoutX="293.0" layoutY="54.0" prefHeight="379.0" prefWidth="331.0" />
+            <AnchorPane fx:id="operations" layoutX="355.0" layoutY="54.0" prefHeight="379.0" prefWidth="269.0" />
          </children>
       </AnchorPane>
    </left>

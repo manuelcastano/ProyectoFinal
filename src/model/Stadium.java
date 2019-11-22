@@ -6,10 +6,9 @@ public class Stadium implements Comparable<Stadium>, Comparator<Stadium>{
 	
 	private String name;
 	private int capacity;
-	private int area;
+	private double area;
 	
-	public Stadium(String name, int capacity, int area) {
-		
+	public Stadium(String name, int capacity, double area) {
 		this.name = name;
 		this.capacity = capacity;
 		this.area = area;
@@ -31,17 +30,17 @@ public class Stadium implements Comparable<Stadium>, Comparator<Stadium>{
 		this.capacity = capacity;
 	}
 
-	public int getArea() {
+	public double getArea() {
 		return area;
 	}
 
-	public void setArea(int area) {
+	public void setArea(double area) {
 		this.area = area;
 	}
 
 	@Override
 	public String toString() {
-		return "Stadium [name=" + name + ", capacity=" + capacity + ", area=" + area + "]";
+		return name + "," + capacity + "," + area;
 	}
 
 	@Override
@@ -51,6 +50,6 @@ public class Stadium implements Comparable<Stadium>, Comparator<Stadium>{
 
 	@Override
 	public int compare(Stadium o1, Stadium o2) {
-		return o1.area-o2.area;
+		return (int) (o1.area-o2.area);
 	}
 }

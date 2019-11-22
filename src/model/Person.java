@@ -1,20 +1,19 @@
 package model;
 
-public class Person {
+import java.io.Serializable;
 
-	
+public class Person implements Serializable{
+
 	private String name;
 	private String id;
 	private double salary;
 	
 	public Person(String name, String id, double salary) {
-		
 		this.name = name;
 		this.id = id;
 		this.salary = salary;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -38,6 +37,4 @@ public class Person {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	
-	
 }

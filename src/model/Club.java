@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Club implements Comparator<Club>, Comparable<Club>{
+public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 
 	private String name;
 	private int points;

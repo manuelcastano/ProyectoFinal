@@ -83,7 +83,7 @@ public class League {
 	public void addStadium(Stadium s) throws IOException, ElementExistException {
 		if(!stadiumExist(s.getName())) {
 			stadium.add(s);
-			writeStadiums();
+			writeStadium(s);
 		}
 		else {
 			throw new ElementExistException();
@@ -113,18 +113,19 @@ public class League {
 	public void addReferee(Referee r) throws IOException, ElementExistException {
 		if(firstReferee == null) {
 			firstReferee = r;
+			writeReferee(r);
 		}
 		else {
 			if(!refereeExist(r.getName())) {
 				r.setNext(firstReferee);
 				firstReferee.setPrev(r);
 				firstReferee = r;
+				writeReferee(r);
 			}
 			else {
 				throw new ElementExistException();
 			}
 		}
-		writeReferees();
 	}
 	
 	public boolean refereeExist(String nameReferee) {
@@ -162,7 +163,7 @@ public class League {
 		String line = "";
 		while((line = bw.readLine()) != null) {
 			String[] s = line.split(",");
-			Stadium b = new Stadium(s[0], Integer.parseInt(s[1]), Integer.parseInt(s[2]));
+			Stadium b = new Stadium(s[0], Integer.parseInt(s[1]), Double.parseDouble(s[2]));
 			stadium.add(b);
 		}
 		bw.close();
@@ -201,30 +202,24 @@ public class League {
 		ois.close();
 	}
 	
-	public void writeReferees() throws IOException {
+	public void writeReferee(Referee r) throws IOException {
 		File f = new File(REFEREE_FILE);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(f, true));
-		Referee actual = firstReferee;
-		while(actual != null) {
-			bw.write(actual.toString());
-			actual = actual.getNext();
-		}
+		bw.write(r.toString()+"\n");
 		bw.close();
 	}
 	
-	public void writeStadiums() throws IOException {
+	public void writeStadium(Stadium s) throws IOException {
 		File f = new File(STADIUM_FILE);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(f, true));
-		for(int i = 0; i < stadium.size(); i++) {
-			bw.write(stadium.get(i).toString());
-		}
+		bw.write(s.toString()+"\n");
 		bw.close();
 	}
 	
 	public void writeBall(Ball b) throws IOException {
-		File f = new File(CLUB_FILE);
+		File f = new File(BALL_FILE);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(f, true));
-		bw.write(b.toString());
+		bw.write(b.toString()+"\n");
 		bw.close();
 	}
 	
@@ -513,34 +508,37 @@ public class League {
 		return msg;
 	}
 	
-	public boolean updateNameClub(String nameClub,String newNameClub) {
+	public boolean updateNameClub(String nameClub,String newNameClub) throws FileNotFoundException, IOException {
 		boolean update =false;
 		for (int i = 0; i < clubs.size() && ! update; i++) {
 			if (clubs.get(i).getName().contentEquals(nameClub)) {
 				clubs.get(i).setName(newNameClub);
 				update=true;
+				writeClubs();
 			}	
 		}
 		return update;
 	}
 	
 	//responsability add player
-	public void addPlayer (String nameClub,Player newPlayer) throws ElementExistException {
+	public void addPlayer (String nameClub,Player newPlayer) throws ElementExistException, FileNotFoundException, IOException {
 		boolean finded = false;
 		for (int i = 0;i<clubs.size() && !finded ;i ++) {
 			if (clubs.get(i).getName().equals(nameClub)) {
 				clubs.get(i).addPlayer(newPlayer);
 				finded =true;
+				writeClubs();
 			}
 		}
 	}
 	//responsability updateGoalsPlayer
-	public boolean updateNumberGoalsPlayer(String nameClub,String namePlayer,int numberGoals) {
+	public boolean updateNumberGoalsPlayer(String nameClub,String namePlayer,int numberGoals) throws FileNotFoundException, IOException {
 		boolean finded = false;
 		for (int i = 0; i< clubs.size() && !finded ;i++) {
 			if (clubs.get(i).getName().equals(nameClub)) {
 				clubs.get(i).updateGoalsPlayer(namePlayer, numberGoals);
 				finded =true;
+				writeClubs();
 			}		
 		}
 		return finded;
@@ -556,12 +554,32 @@ public class League {
 		
 	}
 	//update Name estadium
-	public boolean updateNameStadium(String nameStadium ,String newNameStadium) {
+	public boolean updateNameStadium(String nameStadium ,String newNameStadium) throws IOException {
 		boolean finded = false;
 		for (int i = 0 ; i < stadium.size() && !finded  ; i++ ) {
 			if (stadium.get(i).getName().equals(nameStadium)) {
-				stadium.get(i).setName(newNameStadium);
 				finded =true;
+				File f = new File(STADIUM_FILE);
+				File tempFile = new File(f.getAbsolutePath()+".txt");
+				BufferedReader br = new BufferedReader(new FileReader(f));
+		        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+		        String line = null;
+		        while ((line = br.readLine()) != null) {
+		            if (!line.trim().equals(stadium.get(i).toString())) {
+		                pw.println(line);
+		                pw.flush();
+		            }
+		            else {
+						stadium.get(i).setName(newNameStadium);
+		            	line = stadium.get(i).toString();
+		            	pw.println(line);
+		                pw.flush();
+		            }
+		        }
+		        pw.close();
+		        br.close();
+		        f.delete();
+		        tempFile.renameTo(f);
 			}
 		}
 		return finded;
@@ -577,25 +595,30 @@ public class League {
 		return finded;
 	}
 	//
-	public boolean addTechnical(String nameClan,Technical technical) throws ElementExistException {
+	public boolean addTechnical(String nameClub,Technical technical) throws ElementExistException, FileNotFoundException, IOException, NotFindedException {
 		boolean finded = false;
 		for (int i = 0; i<clubs.size() && !finded ;i++) {
-			if (clubs.get(i).getName().equals(nameClan)) {
+			if (clubs.get(i).getName().equals(nameClub)) {
 				 clubs.get(i).addTechnical(technical);
 				 finded = true;
+				 writeClubs();
 			}	
+		}
+		if(!finded) {
+			throw new NotFindedException();
 		}
 		return finded;
 	}
 	//Actualiza el numero de faltas de un arbitro
 	
-	public boolean updateNumberFouls(String nameReferee , int newNumberReferee) {
+	public boolean updateNumberFouls(String nameReferee , int newNumberReferee) throws FileNotFoundException, IOException {
 		boolean finded = false;
 		Referee actual = firstReferee;
 		while(actual != null && !finded) {
 			if (actual.getName().contentEquals(nameReferee)) {
 				actual.setFouls(newNumberReferee);
-				finded = true;				
+				finded = true;
+				writeClubs();
 			}
 			actual = actual.getNext();
 		}
