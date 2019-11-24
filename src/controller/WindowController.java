@@ -25,6 +25,8 @@ public class WindowController implements Initializable{
 	private BorderPane bp;
 	@FXML
 	private MenuButton mb;
+	@FXML
+	private MenuButton mb1;
 	private ThreadBall tb;
 	@FXML
 	private AnchorPane operations;
@@ -91,6 +93,20 @@ public class WindowController implements Initializable{
 		});
 		forward.setOnAction(e -> {
 			addForward();
+		});
+		mb1.getItems().clear();
+		MenuItem nameClub = new MenuItem("Name club");
+		MenuItem goals = new MenuItem("Player goals");
+		MenuItem foulsReferee = new MenuItem("Referee fouls");
+		mb1.getItems().addAll(nameClub, goals, foulsReferee);
+		nameClub.setOnAction(e -> {
+			updateNameClub();
+		});
+		goals.setOnAction(e -> {
+			updateGoals();
+		});
+		foulsReferee.setOnAction(e -> {
+			updateFoulsReferee();
 		});
 	}
 
@@ -1118,5 +1134,145 @@ public class WindowController implements Initializable{
 			}
 		});
 		operations.getChildren().addAll(nameClub, nameClubT, name, nameT, id, idT, salary, salaryT, yellowCards, yellowCardsT, redCards, redCardsT, goals, goalsT, assists, assistsT, kicksToGoal, kicksToGoalT, add, error, syntaxError);
+	}
+	
+	public void updateNameClub() {
+		operations.getChildren().clear();
+		Label nameClub = new Label("Name of the club");
+		nameClub.setLayoutX(-50);
+		nameClub.setLayoutY(0);
+		TextField nameClubT = new TextField();
+		nameClubT.setLayoutX(50);
+		nameClubT.setLayoutY(0);
+		Label newName = new Label("New name");
+		newName.setLayoutX(-20);
+		newName.setLayoutY(30);
+		TextField newNameT = new TextField();
+		newNameT.setLayoutX(50);
+		newNameT.setLayoutY(30);
+		Button add = new Button("Update name");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element doesn't exist");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		add.setOnAction(e -> {
+			String theName = nameClubT.getText();
+			String theNewName = newNameT.getText();
+			try {
+				league.updateNameClub(theName, theNewName);
+				error.setVisible(false);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (NotFindedException e1) {
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(nameClub, nameClubT, newName, newNameT, add, error);
+	}
+	
+	public void updateGoals() {
+		operations.getChildren().clear();
+		Label nameClub = new Label("Name of the club");
+		nameClub.setLayoutX(-50);
+		nameClub.setLayoutY(0);
+		TextField nameClubT = new TextField();
+		nameClubT.setLayoutX(50);
+		nameClubT.setLayoutY(0);
+		Label namePlayer = new Label("Name of the player");
+		namePlayer.setLayoutX(-55);
+		namePlayer.setLayoutY(30);
+		TextField namePlayerT = new TextField();
+		namePlayerT.setLayoutX(50);
+		namePlayerT.setLayoutY(30);
+		Label numberGoals = new Label("Number of goals");
+		numberGoals.setLayoutX(-50);
+		numberGoals.setLayoutY(60);
+		TextField numberGoalsT = new TextField();
+		numberGoalsT.setLayoutX(50);
+		numberGoalsT.setLayoutY(60);
+		Button add = new Button("Update goals");
+		add.setLayoutX(35);
+		add.setLayoutY(100);
+		Label error = new Label("The element doesn't exist");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(130);
+		Label syntaxError = new Label("Enter correct data please");
+		syntaxError.setVisible(false);
+		syntaxError.setLayoutX(35);
+		syntaxError.setLayoutY(160);
+		add.setOnAction(e -> {
+			try {
+				String nameClubN = nameClubT.getText();
+				String namePlayerN = namePlayerT.getText();
+				int goals = Integer.parseInt(numberGoalsT.getText());
+				syntaxError.setVisible(false);
+				try {
+					league.updateNumberGoalsPlayer(nameClubN, namePlayerN, goals);;
+					error.setVisible(false);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (NotFindedException e1) {
+					error.setVisible(true);
+				}
+			} catch(Exception ex) {
+				syntaxError.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(nameClub, nameClubT, namePlayer, namePlayerT, numberGoals, numberGoalsT, add, error, syntaxError);
+	}
+	
+	public void updateFoulsReferee() {
+		operations.getChildren().clear();
+		Label idReferee = new Label("Id of the referee");
+		idReferee.setLayoutX(-50);
+		idReferee.setLayoutY(0);
+		TextField idRefereeT = new TextField();
+		idRefereeT.setLayoutX(50);
+		idRefereeT.setLayoutY(0);
+		Label fouls = new Label("Number of fouls");
+		fouls.setLayoutX(-55);
+		fouls.setLayoutY(30);
+		TextField foulsT = new TextField();
+		foulsT.setLayoutX(50);
+		foulsT.setLayoutY(30);
+		Button add = new Button("Update fouls");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element doesn't exist");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		Label syntaxError = new Label("Enter correct data please");
+		syntaxError.setVisible(false);
+		syntaxError.setLayoutX(35);
+		syntaxError.setLayoutY(130);
+		add.setOnAction(e -> {
+			try {
+				String idRefereeN = idRefereeT.getText();
+				int foulsN = Integer.parseInt(foulsT.getText());
+				league.updateNumberFouls(idRefereeN, foulsN);
+				syntaxError.setVisible(false);
+				try {
+					league.updateNumberFouls(idRefereeN, foulsN);
+					error.setVisible(false);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (NotFindedException e1) {
+					error.setVisible(true);
+				}
+			} catch(Exception ex) {
+				syntaxError.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(idReferee, idRefereeT, fouls, foulsT, add, error, syntaxError);
 	}
 }

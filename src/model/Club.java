@@ -198,7 +198,6 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 	}
 	
 	public void addPlayer(Player newPlayer) throws ElementExistException {
-		
 		if (firstPlayer == null) {
 			firstPlayer = newPlayer;
 		}
@@ -226,7 +225,7 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 		return finded;
 	}
 	
-	public void updateGoalsPlayer(String namePlayer ,int numberGoals) {
+	public void updateGoalsPlayer(String namePlayer ,int numberGoals) throws NotFindedException {
 		Player actual = firstPlayer;
 		boolean finded = false;
 		while (actual !=null && !finded) {
@@ -235,6 +234,9 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 				finded = true;
 			}
 			actual = actual.getNext();
+		}
+		if(!finded) {
+			throw new NotFindedException();
 		}
 	}
 	

@@ -30,6 +30,17 @@
               </items>
             </MenuButton>
             <AnchorPane fx:id="operations" layoutX="355.0" layoutY="54.0" prefHeight="379.0" prefWidth="269.0" />
+            <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="128.0" prefHeight="80.0" prefWidth="82.0" text="¿What do you want to update?" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="mb1" layoutX="152.0" layoutY="150.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
          </children>
       </AnchorPane>
    </left>

@@ -508,31 +508,36 @@ public class League {
 		return msg;
 	}
 	
-	public boolean updateNameClub(String nameClub,String newNameClub) throws FileNotFoundException, IOException {
+	public void updateNameClub(String nameClub,String newNameClub) throws FileNotFoundException, IOException, NotFindedException {
 		boolean update =false;
-		for (int i = 0; i < clubs.size() && ! update; i++) {
+		for (int i = 0; i < clubs.size() && !update; i++) {
 			if (clubs.get(i).getName().contentEquals(nameClub)) {
 				clubs.get(i).setName(newNameClub);
-				update=true;
+				update = true;
 				writeClubs();
 			}	
 		}
-		return update;
+		if(!update) {
+			throw new NotFindedException();
+		}
 	}
 	
 	//responsability add player
-	public void addPlayer (String nameClub,Player newPlayer) throws ElementExistException, FileNotFoundException, IOException {
+	public void addPlayer (String nameClub,Player newPlayer) throws ElementExistException, FileNotFoundException, IOException, NotFindedException {
 		boolean finded = false;
 		for (int i = 0;i<clubs.size() && !finded ;i ++) {
 			if (clubs.get(i).getName().equals(nameClub)) {
 				clubs.get(i).addPlayer(newPlayer);
-				finded =true;
+				finded = true;
 				writeClubs();
 			}
 		}
+		if(!finded) {
+			throw new NotFindedException();
+		}
 	}
 	//responsability updateGoalsPlayer
-	public boolean updateNumberGoalsPlayer(String nameClub,String namePlayer,int numberGoals) throws FileNotFoundException, IOException {
+	public void updateNumberGoalsPlayer(String nameClub,String namePlayer,int numberGoals) throws FileNotFoundException, IOException, NotFindedException {
 		boolean finded = false;
 		for (int i = 0; i< clubs.size() && !finded ;i++) {
 			if (clubs.get(i).getName().equals(nameClub)) {
@@ -541,7 +546,9 @@ public class League {
 				writeClubs();
 			}		
 		}
-		return finded;
+		if(!finded) {
+			throw new NotFindedException();
+		}
 	}
 	//Actualiza el tipo del balon
 	public Ball updateTypeBall (String idBall , String newBallType ) {
@@ -611,18 +618,39 @@ public class League {
 	}
 	//Actualiza el numero de faltas de un arbitro
 	
-	public boolean updateNumberFouls(String nameReferee , int newNumberReferee) throws FileNotFoundException, IOException {
+	public void updateNumberFouls(String idReferee , int newNumberReferee) throws NotFindedException, IOException {
 		boolean finded = false;
 		Referee actual = firstReferee;
 		while(actual != null && !finded) {
-			if (actual.getName().contentEquals(nameReferee)) {
-				actual.setFouls(newNumberReferee);
+			if (actual.getId().equals(idReferee)) {
 				finded = true;
-				writeClubs();
+				File f = new File(REFEREE_FILE);
+				File tempFile = new File(f.getAbsolutePath()+".txt");
+				BufferedReader br = new BufferedReader(new FileReader(f));
+		        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+		        String line = null;
+		        while ((line = br.readLine()) != null) {
+		            if (!line.trim().equals(actual.toString())) {
+		                pw.println(line);
+		                pw.flush();
+		            }
+		            else {
+						actual.setFouls(newNumberReferee);
+		            	line = actual.toString();
+		            	pw.println(line);
+		                pw.flush();
+		            }
+		        }
+		        pw.close();
+		        br.close();
+		        f.delete();
+		        tempFile.renameTo(f);
 			}
 			actual = actual.getNext();
 		}
-		return finded;
+		if(!finded) {
+			throw new NotFindedException();
+		}
 	}
 	
 	public boolean clubExist(String nameClub) {
