@@ -1,4 +1,4 @@
-white,soccer,15464531
+white,Futbol,15464531
 negro,fdnsfdnfsd,156654456
 negro,fdnsfdnfsd,46446645
 dsad,asssad,44684

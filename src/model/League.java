@@ -226,6 +226,28 @@ public class League {
 	public void eliminateReferee(String name) throws IOException, EliminateException {
 		Referee actual = firstReferee;
 		boolean finded = false;
+		if(actual.getName().equals(name)) {
+			if(actual.getNext() != null) {
+				actual.getNext().setPrev(actual.getPrev());
+			}
+			firstReferee = actual.getNext();
+			finded = true;
+			File f = new File(REFEREE_FILE);
+			File tempFile = new File(f.getAbsolutePath()+".txt");
+			BufferedReader br = new BufferedReader(new FileReader(f));
+	        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+	        String line = null;
+	        while ((line = br.readLine()) != null) {
+	            if (!line.trim().equals(actual.toString())) {
+	                pw.println(line);
+	                pw.flush();
+	            }
+	        }
+	        pw.close();
+	        br.close();
+	        f.delete();
+	        tempFile.renameTo(f);
+		}
 		while(actual != null && !finded) {
 			if(actual.getName().equals(name)) {
 				if(actual.getPrev() != null) {
@@ -551,21 +573,42 @@ public class League {
 		}
 	}
 	//Actualiza el tipo del balon
-	public Ball updateTypeBall (String idBall , String newBallType ) {
-		if (firstBall == null) {
-			return null;
+	public void updateTypeBall (String idBall , String newBallType ) throws IOException, NotFindedException {
+		if (firstBall != null) {
+			Ball b = firstBall.updateTypeBall(idBall , newBallType);
+			if(b == null) {
+				throw new NotFindedException();
+			}
+			File f = new File(BALL_FILE);
+			File tempFile = new File(f.getAbsolutePath()+".txt");
+			BufferedReader br = new BufferedReader(new FileReader(f));
+	        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+	        String line = null;
+	        while ((line = br.readLine()) != null) {
+	        	String[] s = line.split(",");
+	            if (!s[2].equals(idBall)) {
+	                pw.println(line);
+	                pw.flush();
+	            }
+	            else {
+	            	line = b.toString();
+	            	pw.println(line);
+	                pw.flush();
+	            }
+	        }
+	        pw.close();
+	        br.close();
+	        f.delete();
+	        tempFile.renameTo(f);
 		}
-		else {
-			return firstBall.updateTypeBall(idBall , newBallType);
-		}
-		
 	}
+	
 	//update Name estadium
-	public boolean updateNameStadium(String nameStadium ,String newNameStadium) throws IOException {
+	public void updateNameStadium(String nameStadium ,String newNameStadium) throws IOException, NotFindedException {
 		boolean finded = false;
 		for (int i = 0 ; i < stadium.size() && !finded  ; i++ ) {
 			if (stadium.get(i).getName().equals(nameStadium)) {
-				finded =true;
+				finded = true;
 				File f = new File(STADIUM_FILE);
 				File tempFile = new File(f.getAbsolutePath()+".txt");
 				BufferedReader br = new BufferedReader(new FileReader(f));
@@ -589,17 +632,22 @@ public class League {
 		        tempFile.renameTo(f);
 			}
 		}
-		return finded;
+		if(!finded) {
+			throw new NotFindedException();
+		}
 	}
-	public boolean eliminatePlayer(String nameClan,String namePlayer) throws EliminateException, FileNotFoundException, IOException {
+	public void eliminatePlayer(String nameClub,String namePlayer) throws EliminateException, FileNotFoundException, IOException, NotFindedException {
 		boolean finded = false;
 		for (int i = 0 ; i <clubs.size() && !finded ; i++) {
-			if (clubs.get(i).getName().equals(nameClan)) {
-				finded = clubs.get(i).eliminatePlayer(namePlayer);
+			if (clubs.get(i).getName().equals(nameClub)) {
+				finded = true;
+				clubs.get(i).eliminatePlayer(namePlayer);
 				writeClubs();
 			}
 		}
-		return finded;
+		if(!finded) {
+			throw new NotFindedException();
+		}
 	}
 	//
 	public boolean addTechnical(String nameClub,Technical technical) throws ElementExistException, FileNotFoundException, IOException, NotFindedException {
@@ -661,5 +709,19 @@ public class League {
 			}
 		}
 		return exist;
+	}
+	
+	public void updateWonGames(String nameTechnical, int numberWonGames, String nameClub) throws NotFindedException, FileNotFoundException, IOException {
+		boolean finded = false;
+		for(int i = 0; i < clubs.size() && !finded; i++) {
+			if(clubs.get(i).getName().equals(nameClub)) {
+				finded = true;
+				clubs.get(i).updateWonGames(nameTechnical, numberWonGames);
+				writeClubs();
+			}
+		}
+		if(!finded) {
+			throw new NotFindedException();
+		}
 	}
 }

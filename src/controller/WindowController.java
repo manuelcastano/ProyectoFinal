@@ -27,6 +27,8 @@ public class WindowController implements Initializable{
 	private MenuButton mb;
 	@FXML
 	private MenuButton mb1;
+	@FXML
+	private MenuButton delete;
 	private ThreadBall tb;
 	@FXML
 	private AnchorPane operations;
@@ -98,7 +100,10 @@ public class WindowController implements Initializable{
 		MenuItem nameClub = new MenuItem("Name club");
 		MenuItem goals = new MenuItem("Player goals");
 		MenuItem foulsReferee = new MenuItem("Referee fouls");
-		mb1.getItems().addAll(nameClub, goals, foulsReferee);
+		MenuItem typeBall = new MenuItem("Type ball");
+		MenuItem stadiumName = new MenuItem("Stadium name");
+		MenuItem wonGames = new MenuItem("Won games of a technical");
+		mb1.getItems().addAll(nameClub, goals, foulsReferee, typeBall, stadiumName, wonGames);
 		nameClub.setOnAction(e -> {
 			updateNameClub();
 		});
@@ -107,6 +112,29 @@ public class WindowController implements Initializable{
 		});
 		foulsReferee.setOnAction(e -> {
 			updateFoulsReferee();
+		});
+		typeBall.setOnAction(e -> {
+			updateTypeBall();
+		});
+		stadiumName.setOnAction(e -> {
+			updateStadiumName();
+		});
+		wonGames.setOnAction(e -> {
+			updateWonGames();
+		});
+		delete.getItems().clear();
+		MenuItem clubD = new MenuItem("Club");
+		MenuItem playerD = new MenuItem("Player");
+		MenuItem refereeD = new MenuItem("Referee");
+		delete.getItems().addAll(clubD, playerD, refereeD);
+		clubD.setOnAction(e -> {
+			deleteClub();
+		});
+		playerD.setOnAction(e -> {
+			deletePlayer();
+		});
+		refereeD.setOnAction(e -> {
+			deleteReferee();
 		});
 	}
 
@@ -1274,5 +1302,232 @@ public class WindowController implements Initializable{
 			}
 		});
 		operations.getChildren().addAll(idReferee, idRefereeT, fouls, foulsT, add, error, syntaxError);
+	}
+	
+	public void updateTypeBall() {
+		operations.getChildren().clear();
+		Label id = new Label("Id");
+		id.setLayoutX(0);
+		id.setLayoutY(0);
+		TextField idT = new TextField();
+		idT.setLayoutX(50);
+		idT.setLayoutY(0);
+		Label type = new Label("New type");
+		type.setLayoutX(-5);
+		type.setLayoutY(30);
+		TextField typeT = new TextField();
+		typeT.setLayoutX(50);
+		typeT.setLayoutY(30);
+		Button add = new Button("Update type");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element doesn't exist");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		add.setOnAction(e -> {
+			String idBall = idT.getText();
+			String typeBall = typeT.getText();
+			try {
+				league.updateTypeBall(idBall, typeBall);
+				error.setVisible(false);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (NotFindedException e1) {
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(id, idT, type, typeT, add, error);
+	}
+	
+	public void updateStadiumName() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Label newName = new Label("New name");
+		newName.setLayoutX(-8);
+		newName.setLayoutY(30);
+		TextField newNameT = new TextField();
+		newNameT.setLayoutX(50);
+		newNameT.setLayoutY(30);
+		Button add = new Button("Update name");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element doesn't exist");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		add.setOnAction(e -> {
+			String nameStadium = nameT.getText();
+			String newNameStadium = newNameT.getText();
+			try {
+				league.updateNameStadium(nameStadium, newNameStadium);
+				error.setVisible(false);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (NotFindedException e1) {
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, newName, newNameT, add, error);
+	}
+	
+	public void updateWonGames() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Label wonGames = new Label("Won games");
+		wonGames.setLayoutX(-20);
+		wonGames.setLayoutY(30);
+		TextField wonGamesT = new TextField();
+		wonGamesT.setLayoutX(50);
+		wonGamesT.setLayoutY(30);
+		Label clubName = new Label("Club name");
+		clubName.setLayoutX(-10);
+		clubName.setLayoutY(60);
+		TextField clubNameT = new TextField();
+		clubNameT.setLayoutX(50);
+		clubNameT.setLayoutY(60);
+		Button add = new Button("Update won games");
+		add.setLayoutX(35);
+		add.setLayoutY(100);
+		Label error = new Label("The element doesn't exist");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(130);
+		Label syntaxError = new Label("Enter correct data");
+		syntaxError.setVisible(false);
+		syntaxError.setLayoutX(35);
+		syntaxError.setLayoutY(160);
+		add.setOnAction(e -> {
+			try {
+				String nameTechnical = nameT.getText();
+				int wonGamesTechnical = Integer.parseInt(wonGamesT.getText());
+				String club = clubNameT.getText();
+				syntaxError.setVisible(false);
+				try {
+					league.updateWonGames(nameTechnical, wonGamesTechnical, club);
+					error.setVisible(false);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (NotFindedException e1) {
+					error.setVisible(true);
+				}
+			} catch(Exception ex) {
+				syntaxError.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, wonGames, wonGamesT, clubName, clubNameT, add, error, syntaxError);
+	}
+	
+	public void deleteClub() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Button add = new Button("Delete club");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element to eliminate doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		add.setOnAction(e -> {
+			try {
+				league.eliminateClub(nameT.getText());
+				error.setVisible(false);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (EliminateException e1) {
+				error.setVisible(true);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
+		operations.getChildren().addAll(name, nameT, add, error);
+	}
+	
+	public void deletePlayer() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Label nameClub = new Label("Club");
+		nameClub.setLayoutX(0);
+		nameClub.setLayoutY(30);
+		TextField nameClubT = new TextField();
+		nameClubT.setLayoutX(50);
+		nameClubT.setLayoutY(30);
+		Button add = new Button("Delete player");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element to eliminate doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		Label errorClub = new Label("The club doesn't exists");
+		errorClub.setVisible(false);
+		errorClub.setLayoutX(35);
+		errorClub.setLayoutY(130);
+		add.setOnAction(e -> {
+			try {
+				String namePlayer = nameT.getText();
+				String club = nameClubT.getText();
+				league.eliminatePlayer(club, namePlayer);
+				error.setVisible(false);
+				errorClub.setVisible(false);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (EliminateException e1) {
+				error.setVisible(true);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (NotFindedException e1) {
+				errorClub.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, nameClub, nameClubT, add, error, errorClub);
+	}
+	
+	public void deleteReferee() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Button add = new Button("Delete referee");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element to eliminate doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		add.setOnAction(e -> {
+			try {
+				league.eliminateReferee(nameT.getText());
+				error.setVisible(false);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (EliminateException e1) {
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, add, error);
 	}
 }

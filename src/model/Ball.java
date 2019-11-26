@@ -12,7 +12,6 @@ public class Ball implements Comparable<Ball>{
 		this.color = color;
 		this.type = type;
 		this.id = id;
-	
 	}
 
 	public String getColor() {
@@ -163,21 +162,18 @@ public class Ball implements Comparable<Ball>{
 			}
 		}
 	}
+	
 	//Actualiza el tipo del balon
-	public Ball updateTypeBall(String id,String newType) {
-		if (id.compareTo(id)==0) {
+	public Ball updateTypeBall(String id, String newType) {
+		if (this.id.compareTo(id) == 0) {
 			this.setType(newType);
 			return this;
 		}
-		else if (id.compareTo(id)>0) {
+		else if (this.id.compareTo(id)>0) {
 			return  (left == null) ? null : left.updateTypeBall(id, newType);
 		}
 		else {
 			return (right == null) ? null : right.updateTypeBall(id, newType);
 		}
 	}
-	
-	
-	
-	
 }

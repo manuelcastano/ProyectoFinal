@@ -18,24 +18,35 @@
    <left>
       <AnchorPane prefHeight="440.0" prefWidth="630.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="27.0" layoutY="35.0" prefHeight="72.0" prefWidth="88.0" text="¿What do you want to add?" textAlignment="RIGHT" wrapText="true">
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="24.0" layoutY="18.0" prefHeight="72.0" prefWidth="88.0" text="¿What do you want to add?" textAlignment="RIGHT" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
-            <MenuButton fx:id="mb" layoutX="152.0" layoutY="53.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0">
+            <MenuButton fx:id="mb" layoutX="130.0" layoutY="40.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="85.0">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
-            <AnchorPane fx:id="operations" layoutX="355.0" layoutY="54.0" prefHeight="379.0" prefWidth="269.0" />
-            <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="128.0" prefHeight="80.0" prefWidth="82.0" text="¿What do you want to update?" textAlignment="RIGHT" wrapText="true">
+            <AnchorPane fx:id="operations" layoutX="353.0" layoutY="47.0" prefHeight="386.0" prefWidth="271.0" />
+            <Label alignment="CENTER_RIGHT" layoutX="27.0" layoutY="82.0" prefHeight="80.0" prefWidth="82.0" text="¿What do you want to update?" textAlignment="RIGHT" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
-            <MenuButton fx:id="mb1" layoutX="152.0" layoutY="150.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0">
+            <MenuButton fx:id="mb1" layoutX="130.0" layoutY="109.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <Label alignment="CENTER_RIGHT" layoutX="27.0" layoutY="162.0" prefHeight="80.0" prefWidth="82.0" text="¿What do you want to delete?" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="delete" layoutX="130.0" layoutY="189.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />

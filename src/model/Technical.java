@@ -116,7 +116,7 @@ public class Technical extends Person {
 
 	@Override
 	public String toString() {
-		return left + "," + right + "," + hoursWorked;
+		return getName() + "," + getId() + "," + getSalary() + "," + hoursWorked;
 	}
 
 	public void addTechnical(Technical newTechnical ) throws ElementExistException  {
@@ -145,20 +145,28 @@ public class Technical extends Person {
 		 return getId().compareTo(newTechnical.getId());
 	}
 
-	public void updateWonGames(String idTechnical, int numberWonGames) {
-		if(this instanceof Coach && getId().equals(idTechnical)) {
+	public Technical updateWonGames(String nameTechnical, int numberWonGames) {
+		if(this instanceof Coach && getName().equals(nameTechnical)) {
 			Coach c = (Coach) this;
 			c.setWonGames(numberWonGames);
+			return this;
 		}
-		else if(getId().compareTo(idTechnical) > 0) {
+		else if(getName().compareTo(nameTechnical) > 0) {
 			if(left != null) {
-				left.updateWonGames(idTechnical, numberWonGames);
+				left.updateWonGames(nameTechnical, numberWonGames);
+			}
+			else {
+				return null;
 			}
 		}
-		else if(getId().compareTo(idTechnical) < 0) {
+		else if(getName().compareTo(nameTechnical) < 0) {
 			if(right != null) {
-				right.updateWonGames(idTechnical, numberWonGames);
+				right.updateWonGames(nameTechnical, numberWonGames);
+			}
+			else {
+				return null;
 			}
 		}
+		return null;
 	}	
 }

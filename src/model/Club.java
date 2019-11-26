@@ -278,9 +278,12 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 		}
 	}
 	
-	public void updateWonGames(String idTechnical, int numberWonGames) {
+	public void updateWonGames(String nameTechnical, int numberWonGames) throws NotFindedException {
 		if(firstTechnical != null) {
-			firstTechnical.updateWonGames(idTechnical, numberWonGames);
+			Technical t = firstTechnical.updateWonGames(nameTechnical, numberWonGames);
+			if(t == null) {
+				throw new NotFindedException();
+			}
 		}
 	}	
 }
