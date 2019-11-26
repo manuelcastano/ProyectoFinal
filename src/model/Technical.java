@@ -1,6 +1,6 @@
 package model;
 
-public class Technical extends Person {
+public class Technical extends Person implements Tax , Holiday {
 	
 	private Technical left;
 	private Technical right;
@@ -168,5 +168,33 @@ public class Technical extends Person {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public double Taxes() {
+		double salaryMin = 828116;
+		double tax=0;
+		if(this.getSalary()>=salaryMin) {
+			if (hoursWorked <= 100) {
+				tax = this.getSalary()* 0.12;	
+			}
+			else{
+				tax = this.getSalary()*0.19;
+			}
+		}
+		return tax;
+	}
+	
+	//vaciones por mes  
+	@Override
+	public int day() {
+		int day = 0;
+		int dayByMonth = 6*22;
+		if (hoursWorked == dayByMonth ) {
+			day = 3;
+		}else  if (hoursWorked >dayByMonth){
+			day = 5;
+		}
+		return day;
 	}	
 }

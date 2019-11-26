@@ -2,7 +2,7 @@ package model;
 
 import java.util.Comparator;
 
-public class Player extends Person implements Comparator<Player>, Comparable<Player>{
+public class Player extends Person implements Comparator<Player>, Comparable<Player>, Tax, Holiday {
 	
 	
 	private int yellowCards;
@@ -79,5 +79,32 @@ public class Player extends Person implements Comparator<Player>, Comparable<Pla
 	@Override
 	public int compareTo(Player p) {
 		return assists-p.assists;
+	}
+
+	@Override
+	public double Taxes() {
+		double salaryMin =828116;
+		double tax=0;
+		if (this.getSalary()>=salaryMin && this.getSalary() < salaryMin *2) {
+			tax = this.getSalary()* 0.10;
+		}else if (this.getSalary()>=salaryMin*2) {
+			tax = this.getSalary() * 0.20;
+		}
+		return tax;
+	}
+	
+	//vaciones por mes 
+	@Override
+	public int day() {
+		
+		int dayBymont = 3;
+		if (goals == 1) {
+			dayBymont=4;
+		}else if  (goals ==2) {
+			dayBymont=5;
+		}else {
+			dayBymont=7;
+		}
+		return dayBymont;
 	}
 }
