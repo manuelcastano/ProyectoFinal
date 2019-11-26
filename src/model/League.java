@@ -280,7 +280,7 @@ public class League {
 		}
 	}
 	
-	public void eliminateBall(String idBall) throws IOException {
+	public void eliminateBall(String idBall) throws IOException, EliminateException {
 		if(firstBall != null) {
 			firstBall = firstBall.eliminateBall(idBall);
 			File f = new File(BALL_FILE);
@@ -290,7 +290,7 @@ public class League {
 	        String line = null;
 	        while ((line = br.readLine()) != null) {
 	        	String[] s = line.split(",");
-	            if (s[2].equals(idBall)) {
+	            if (!s[2].equals(idBall)) {
 	                pw.println(line);
 	                pw.flush();
 	            }
@@ -299,6 +299,9 @@ public class League {
 	        br.close();
 	        f.delete();
 	        tempFile.renameTo(f);
+		}
+		else {
+			throw new EliminateException();
 		}
 	}
 	
@@ -345,7 +348,7 @@ public class League {
 	}
 
 	
-	public void eliminateTechnical(String clubName, String nameTechnical) throws FileNotFoundException, IOException {
+	public void eliminateTechnical(String clubName, String nameTechnical) throws FileNotFoundException, IOException, NotFindedException, EliminateException {
 		boolean finded = false;
 		for(int i = 0; i < clubs.size() && !finded; i++) {
 			if(clubs.get(i).getName().equals(clubName)) {
@@ -353,6 +356,9 @@ public class League {
 				clubs.get(i).eliminateTechnical(nameTechnical);
 				writeClubs();
 			}
+		}
+		if(!finded) {
+			throw new NotFindedException();
 		}
 	}
 	
@@ -362,7 +368,7 @@ public class League {
 			Club less = clubs.get(i);
 			int aux= i;
 			for(int j = i+1; j < clubs.size(); j++) {
-				if(less.compare(less, clubs.get(j)) > 0) {
+				if(less.compare(less, clubs.get(j)) < 0) {
 					less = clubs.get(j);
 					aux = j;
 				}
@@ -477,7 +483,7 @@ public class League {
 	//insertion
 	public void orderStadiumsByCapacity() {
 		for(int i = 1; i < stadium.size(); i++) {
-			for(int j = 1; j > 0 && (stadium.get(j-1).compareTo(stadium.get(j))) > 0; j--){
+			for(int j = i; j > 0 && (stadium.get(j-1).compareTo(stadium.get(j))) > 0; j--){
 				Stadium temp = stadium.get(j);
 				stadium.set(j, stadium.get(j-1));
 				stadium.set(j-1, temp);
@@ -488,7 +494,7 @@ public class League {
 	//insertion
 	public void orderStadiumsByArea() {
 		for(int i = 1; i < stadium.size(); i++) {
-			for(int j = 1; j > 0 && (stadium.get(j-1).compare(stadium.get(j-1), stadium.get(j))) > 0; j--){
+			for(int j = i; j > 0 && (stadium.get(j-1).compare(stadium.get(j-1), stadium.get(j))) > 0; j--){
 				Stadium temp = stadium.get(j);
 				stadium.set(j, stadium.get(j-1));
 				stadium.set(j-1, temp);
@@ -723,5 +729,55 @@ public class League {
 		if(!finded) {
 			throw new NotFindedException();
 		}
+	}
+	
+	public String clubTable() {
+		String msg = "";
+		for(int i = 0; i < clubs.size(); i++) {
+			msg += clubs.get(i).table() + "\n";
+		}
+		return msg;
+	}
+	
+	public String playersByGoals() {
+		String msg = "";
+		for(int i = 0; i < clubs.size(); i++) {
+			msg += clubs.get(i).getName() + "\n";
+			msg += clubs.get(i).playersByGoals();
+		}
+		return msg;
+	}
+	
+	public String playersByAssists() {
+		String msg = "";
+		for(int i = 0; i < clubs.size(); i++) {
+			msg += clubs.get(i).getName() + "\n";
+			msg += clubs.get(i).playersByAssists();
+		}
+		return msg;
+	}
+	
+	public String stadiumsByCapacity() {
+		String msg = "";
+		for(int i = 0; i < stadium.size(); i++) {
+			msg += stadium.get(i).stadiumCapacity() + "\n";
+		}
+		return msg;
+	}
+	
+	public String stadiumsByArea() {
+		String msg = "";
+		for(int i = 0; i < stadium.size(); i++) {
+			msg += stadium.get(i).stadiumArea() + "\n";
+		}
+		return msg;
+	}
+	
+	public String clubs() {
+		String msg = "";
+		for(int i = 0; i < clubs.size(); i++) {
+			msg += clubs.get(i).getName() + "\n";
+		}
+		return msg;
 	}
 }

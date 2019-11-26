@@ -5,6 +5,10 @@ import java.util.Comparator;
 
 public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3310086862630328412L;
 	private String name;
 	private int points;
 	private Player firstPlayer;
@@ -47,9 +51,12 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 		this.firstTechnical = firstTechnical;
 	}
 
-	public void eliminateTechnical(String nameTechnical) {
+	public void eliminateTechnical(String nameTechnical) throws EliminateException {
 		if(firstTechnical != null) {
 			firstTechnical = firstTechnical.eliminateTechnical(nameTechnical);
+		}
+		else {
+			throw new EliminateException();
 		}
 	}
 
@@ -74,7 +81,7 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 		while(actual != null) {
 			Player next = actual.getNext();
 			while(next != null) {
-				if(actual.compare(actual, next) > 0) {
+				if(actual.compare(actual, next) < 0) {
 					if(actual.getPrev() != null) {
 						actual.getPrev().setNext(next);
 					}
@@ -114,7 +121,7 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 		while(actual != null) {
 			Player next = actual.getNext();
 			while(next != null) {
-				if(actual.compareTo(next) > 0) {
+				if(actual.compareTo(next) < 0) {
 					if(actual.getPrev() != null) {
 						actual.getPrev().setNext(next);
 					}
@@ -148,13 +155,9 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 	}
 
 	public void findThefirstPlayer() {
-		Player actual = firstPlayer;
-		Player thefirstPlayer = null;
-		while(actual != null) {
-			thefirstPlayer = actual;
-			actual = actual.getPrev();
+		while(firstPlayer.getPrev() != null) {
+			firstPlayer = firstPlayer.getPrev();
 		}
-		firstPlayer = thefirstPlayer;
 	}
 
 	public int PlayersNumber() {
@@ -285,5 +288,29 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 				throw new NotFindedException();
 			}
 		}
-	}	
+	}
+	
+	public String table() {
+		return name + "\t" + points;
+	}
+	
+	public String playersByGoals() {
+		String msg = "";
+		Player actual = firstPlayer;
+		while(actual != null) {
+			msg += actual.tableGoals() + "\n";
+			actual = actual.getNext();
+		}
+		return msg;
+	}
+	
+	public String playersByAssists() {
+		String msg = "";
+		Player actual = firstPlayer;
+		while(actual != null) {
+			msg += actual.tableAssists() + "\n";
+			actual = actual.getNext();
+		}
+		return msg;
+	}
 }

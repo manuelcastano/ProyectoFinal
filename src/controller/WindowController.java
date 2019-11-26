@@ -16,6 +16,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import model.*;
 import threads.ThreadBall;
 
@@ -29,6 +30,8 @@ public class WindowController implements Initializable{
 	private MenuButton mb1;
 	@FXML
 	private MenuButton delete;
+	@FXML
+	private MenuButton order;
 	private ThreadBall tb;
 	@FXML
 	private AnchorPane operations;
@@ -126,7 +129,10 @@ public class WindowController implements Initializable{
 		MenuItem clubD = new MenuItem("Club");
 		MenuItem playerD = new MenuItem("Player");
 		MenuItem refereeD = new MenuItem("Referee");
-		delete.getItems().addAll(clubD, playerD, refereeD);
+		MenuItem ballD = new MenuItem("Ball");
+		MenuItem technicalD = new MenuItem("Technical");
+		MenuItem stadiumD = new MenuItem("Stadium");
+		delete.getItems().addAll(clubD, playerD, refereeD, ballD, technicalD, stadiumD);
 		clubD.setOnAction(e -> {
 			deleteClub();
 		});
@@ -135,6 +141,41 @@ public class WindowController implements Initializable{
 		});
 		refereeD.setOnAction(e -> {
 			deleteReferee();
+		});
+		ballD.setOnAction(e -> {
+			deleteBall();
+		});
+		technicalD.setOnAction(e -> {
+			deleteTechnical();
+		});
+		stadiumD.setOnAction(e -> {
+			deleteStadium();
+		});
+		order.getItems().clear();
+		MenuItem clubPoints = new MenuItem("Clubs by points");
+		MenuItem playerGoals = new MenuItem("Players by goals");
+		MenuItem playerAssists = new MenuItem("Players by assists");
+		MenuItem stadiumCapacity = new MenuItem("Stadiums by capacity");
+		MenuItem stadiumArea = new MenuItem("Stadiums by area");
+		MenuItem clubName = new MenuItem("Clubs by name");
+		order.getItems().addAll(clubPoints, playerGoals, playerAssists, stadiumCapacity, stadiumArea, clubName);
+		clubPoints.setOnAction(e -> {
+			orderClubsByPoints();
+		});
+		playerGoals.setOnAction(e -> {
+			orderPlayersByGoals();
+		});
+		playerAssists.setOnAction(e -> {
+			orderPlayersByAssists();
+		});
+		stadiumCapacity.setOnAction(e -> {
+			orderStadiumsByCapacity();
+		});
+		stadiumArea.setOnAction(e -> {
+			orderStadiumsByArea();
+		});
+		clubName.setOnAction(e -> {
+			orderClubsByName();
 		});
 	}
 
@@ -1529,5 +1570,166 @@ public class WindowController implements Initializable{
 			}
 		});
 		operations.getChildren().addAll(name, nameT, add, error);
+	}
+	
+	public void deleteBall() {
+		operations.getChildren().clear();
+		Label id = new Label("Id");
+		id.setLayoutX(0);
+		id.setLayoutY(0);
+		TextField idT = new TextField();
+		idT.setLayoutX(50);
+		idT.setLayoutY(0);
+		Button add = new Button("Delete ball");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element to eliminate doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		add.setOnAction(e -> {
+			try {
+				league.eliminateBall(idT.getText());
+				error.setVisible(false);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (EliminateException e1) {
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(id, idT, add, error);
+	}
+	
+	public void deleteTechnical() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Label nameClub = new Label("Club");
+		nameClub.setLayoutX(0);
+		nameClub.setLayoutY(30);
+		TextField nameClubT = new TextField();
+		nameClubT.setLayoutX(50);
+		nameClubT.setLayoutY(30);
+		Button add = new Button("Delete technical");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element to eliminate doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		Label errorClub = new Label("The club doesn't exists");
+		errorClub.setVisible(false);
+		errorClub.setLayoutX(35);
+		errorClub.setLayoutY(130);
+		add.setOnAction(e -> {
+			try {
+				String nameTechnical = nameT.getText();
+				String club = nameClubT.getText();
+				league.eliminateTechnical(club, nameTechnical);
+				error.setVisible(false);
+				errorClub.setVisible(false);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (EliminateException e1) {
+				error.setVisible(true);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (NotFindedException e1) {
+				errorClub.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, nameClub, nameClubT, add, error, errorClub);
+	}
+	
+	public void deleteStadium() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Button add = new Button("Delete stadium");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element to eliminate doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		add.setOnAction(e -> {
+			try {
+				league.eliminateStadium(nameT.getText());
+				error.setVisible(false);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (EliminateException e1) {
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, add, error);
+	}
+	
+	public void orderClubsByPoints() {
+		operations.getChildren().clear();
+		league.orderClubsByPoints();
+		Label table = new Label(league.clubTable());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));;
+		operations.getChildren().add(table);
+	}
+	
+	public void orderPlayersByGoals() {
+		operations.getChildren().clear();
+		league.orderPlayersByGoals();
+		Label table = new Label(league.playersByGoals());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));;
+		operations.getChildren().add(table);
+	}
+	
+	public void orderPlayersByAssists() {
+		operations.getChildren().clear();
+		league.orderPlayersByAssists();
+		Label table = new Label(league.playersByAssists());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));
+		operations.getChildren().add(table);
+	}
+	
+	public void orderStadiumsByCapacity() {
+		operations.getChildren().clear();
+		league.orderStadiumsByCapacity();
+		Label table = new Label(league.stadiumsByCapacity());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));
+		operations.getChildren().add(table);
+	}
+	
+	public void orderStadiumsByArea() {
+		operations.getChildren().clear();
+		league.orderStadiumsByArea();
+		Label table = new Label(league.stadiumsByArea());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));
+		operations.getChildren().add(table);
+	}
+	
+	public void orderClubsByName() {
+		operations.getChildren().clear();
+		league.orderClubsBynames();
+		Label table = new Label(league.clubs());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));
+		operations.getChildren().add(table);
 	}
 }

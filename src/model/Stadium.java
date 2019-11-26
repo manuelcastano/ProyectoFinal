@@ -52,4 +52,12 @@ public class Stadium implements Comparable<Stadium>, Comparator<Stadium>{
 	public int compare(Stadium o1, Stadium o2) {
 		return (int) (o1.area-o2.area);
 	}
+	
+	public String stadiumCapacity() {
+		return name + "\t" + capacity;
+	}
+	
+	public String stadiumArea() {
+		return name + "\t" + area;
+	}
 }

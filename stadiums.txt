@@ -1,1 +1,1000 @@
-Maracaná,458784,4646.0
+Forest Run,59903,71
+Warner,5,5
+Logan,19,51
+John Wall,294,66
+Superior,6,63
+Bluestem,64,17
+Mesta,239,80
+Crescent Oaks,0670,64
+Lakewood Gardens,4,75
+Forest Dale,034,17
+Merrick,597,23
+Heffernan,80,12
+Buell,050,74
+Farwell,51,51
+Elgar,265,96
+Erie,00064,79
+Ridgeview,121,60
+Clove,26,5
+Banding,05,76
+Mitchell,6,65
+Kensington,94,95
+Leroy,654,12
+Meadow Ridge,01,93
+Miller,220,58
+Pleasure,3,42
+Cordelia,58,7
+Bultman,80,90
+Haas,783,58
+Pond,8,87
+Lakewood,97402,51
+Eastlawn,1,51
+Stone Corner,3,91
+Canary,10605,38
+Eagle Crest,6,60
+Bluejay,639,39
+Oakridge,7,58
+Coolidge,99474,21
+Di Loreto,5106,30
+Crest Line,928,1
+Debs,41050,49
+Eagle Crest,10,99
+American,958,47
+1st,837,33
+Arrowood,65065,57
+Sachs,68,86
+Lerdahl,80,42
+Randy,41914,76
+Golden Leaf,16,36
+International,180,82
+Hauk,1,53
+Barnett,51,26
+Florence,79965,24
+Merrick,3,24
+Golf,0896,9
+Killdeer,85747,6
+Scoville,2,30
+Pepper Wood,07,31
+Anniversary,0,16
+Morrow,4588,18
+Blue Bill Park,50111,83
+Scofield,4,30
+Ridge Oak,5237,70
+Evergreen,883,52
+Huxley,95295,58
+Hooker,99284,79
+Bunting,89,93
+Del Sol,807,29
+Continental,25263,84
+La Follette,95055,6
+Superior,03,86
+Novick,875,61
+Karstens,9,36
+Commercial,581,82
+Heffernan,631,1
+Kropf,56,72
+Fairfield,070,42
+Summer Ridge,8227,11
+Lotheville,5617,61
+Graedel,3848,4
+Huxley,40,99
+Dakota,6724,96
+Artisan,0733,31
+Del Mar,5301,6
+Memorial,6718,63
+High Crossing,2,32
+Grover,975,68
+Lake View,4646,27
+Logan,55,63
+Grasskamp,684,30
+Kings,661,68
+Dapin,03462,49
+Crescent Oaks,7,5
+Burning Wood,53,84
+Stang,4,17
+Redwing,4,23
+Prentice,707,42
+Nova,71,31
+Lakewood,56,47
+Merchant,15616,22
+Menomonie,44,26
+Donald,3744,68
+Brickson Park,04080,92
+Delladonna,735,33
+Barby,313,97
+Nancy,51183,63
+Hazelcrest,3,34
+Kropf,129,91
+Cherokee,76,66
+Melrose,8158,36
+Dunning,518,71
+Ryan,97,40
+Vermont,9935,2
+Crest Line,544,81
+Magdeline,71581,60
+Dahle,736,65
+Holmberg,8,85
+Myrtle,2872,91
+Village,8,44
+Hanson,5,53
+Rutledge,77,48
+Farwell,53945,59
+Crowley,34842,6
+Pearson,2673,87
+Blue Bill Park,4005,13
+Derek,81211,83
+Pearson,45384,17
+Golf Course,8,88
+Bonner,215,21
+Charing Cross,702,32
+Lakewood Gardens,36,67
+Dahle,301,21
+Mockingbird,75500,78
+Fordem,469,39
+Hintze,888,21
+Beilfuss,9640,65
+Continental,3,35
+6th,6965,62
+Melrose,6,45
+Atwood,63982,22
+Florence,08938,48
+Doe Crossing,232,38
+Lakeland,93054,58
+Kropf,4,28
+Quincy,651,22
+Hanover,38,25
+Hayes,17,64
+Nancy,86023,44
+Pleasure,9,75
+Spenser,8217,53
+Sullivan,0,15
+Daystar,2403,7
+Bobwhite,1,66
+Bobwhite,0109,98
+South,8297,93
+Westend,4,95
+Vernon,04,85
+Sundown,8042,92
+Logan,4180,50
+Fairfield,9335,65
+Carey,46,62
+La Follette,35,74
+Anhalt,2,48
+Huxley,58,55
+Stone Corner,74,56
+Morrow,98,93
+Rowland,25126,98
+Havey,5,17
+Ronald Regan,3039,4
+Moose,91712,8
+Delaware,388,59
+Mifflin,49374,8
+Anthes,75501,74
+Summit,87,61
+Southridge,6591,44
+Jenifer,71,60
+Surrey,9,73
+Fallview,231,96
+Everett,8,67
+John Wall,37,80
+Arizona,998,85
+Bluestem,03261,44
+Straubel,62977,86
+Lukken,6,58
+Green,03874,52
+Summerview,3510,43
+Bluestem,53,70
+Hollow Ridge,429,91
+Red Cloud,5588,39
+Surrey,65,30
+Arkansas,45990,23
+Old Gate,8729,41
+Roxbury,577,24
+Superior,185,51
+Shopko,7,2
+American,52535,33
+Ridgeway,58,18
+Darwin,8526,12
+Columbus,7,83
+Becker,1075,36
+Sutteridge,7,22
+Bartillon,5,35
+Ohio,7125,79
+Amoth,39,63
+Darwin,571,73
+Moland,119,49
+Northfield,01596,54
+Blaine,10,35
+Talisman,00524,81
+Monterey,4,27
+Blaine,7672,61
+Banding,76,84
+Bartillon,232,15
+Crest Line,78796,78
+Mitchell,64,89
+Valley Edge,276,88
+Warner,6324,48
+Namekagon,6219,16
+Sherman,83652,3
+Pawling,114,91
+Dunning,60,23
+Barby,9261,84
+Mcbride,41,46
+Hintze,1429,91
+Hermina,55,98
+Northview,6058,40
+Mosinee,7176,13
+Summerview,06,37
+Springview,27481,41
+Farragut,5749,84
+Everett,723,91
+Hooker,9159,68
+Fallview,9,33
+Marquette,7,97
+Morningstar,413,18
+Fairfield,02298,16
+Fuller,1942,18
+Dawn,8181,56
+Dixon,736,6
+Jay,58,54
+South,972,79
+Bluejay,5429,75
+Hudson,45721,77
+Susan,93353,12
+Shelley,0,90
+Haas,8,37
+Morrow,75,91
+Roxbury,5388,32
+Fairview,7639,35
+Bowman,4788,96
+Jay,5853,91
+Sloan,89,69
+Everett,0,47
+Farwell,361,24
+Dapin,32,70
+7th,09,2
+Dixon,8849,8
+Grover,67,26
+Springview,8,64
+Jackson,6,80
+Gerald,70265,100
+Brown,52,97
+Mcbride,8444,43
+Kenwood,4728,52
+Del Sol,84860,91
+Dunning,42,16
+Forster,451,49
+Bonner,15,75
+Badeau,26,60
+Mcbride,14136,22
+Kenwood,6743,60
+Schmedeman,70955,50
+Shoshone,0,94
+Rieder,4,22
+Bartillon,43525,56
+Saint Paul,0,37
+Continental,9097,30
+Farragut,54,66
+Dapin,66,75
+Hanover,804,88
+Lindbergh,3915,66
+Buhler,1,58
+Summer Ridge,7626,81
+Warrior,29,23
+Corry,725,38
+Gale,73,24
+Cottonwood,30,28
+Lunder,07567,81
+Karstens,223,13
+Fairview,454,17
+Northwestern,82,85
+Pankratz,65,27
+Ilene,0481,73
+Pawling,3,34
+7th,2,56
+Straubel,4884,4
+Clyde Gallagher,14884,15
+Amoth,1651,68
+Di Loreto,65528,15
+Brown,4,10
+Petterle,81189,87
+Shasta,6360,52
+Basil,35,84
+Moose,178,94
+7th,54,27
+Mallard,73,98
+Ilene,5,54
+Sycamore,71,14
+Westport,2278,80
+Thackeray,0977,25
+Kennedy,6,77
+Monument,23801,52
+Algoma,8431,73
+Park Meadow,5213,67
+Lakewood,917,97
+Maple Wood,88345,52
+Gateway,1,57
+Randy,63,54
+Blaine,05,48
+Loftsgordon,9,86
+Cottonwood,1,57
+Vera,71,90
+Saint Paul,54285,55
+Welch,49998,39
+Rowland,41317,80
+Center,91551,14
+Vahlen,770,12
+Schiller,4,60
+Dunning,286,98
+Artisan,8,65
+Westport,63393,34
+Forest Run,7517,55
+Stephen,04776,95
+Sugar,80,82
+Prairie Rose,779,9
+Cardinal,7439,61
+Kenwood,1257,35
+Division,07,91
+Del Mar,0808,39
+Granby,73528,51
+4th,4,6
+Susan,623,16
+Oneill,30760,17
+Novick,96,87
+Vernon,8303,41
+Comanche,84,21
+Dennis,137,73
+Mariners Cove,217,28
+Redwing,897,8
+Golf Course,434,12
+Northfield,8,8
+4th,550,11
+Artisan,5,63
+Esker,108,54
+Goodland,7600,95
+Arkansas,8109,22
+Spenser,4,37
+Pepper Wood,38459,31
+Sachtjen,07813,15
+Fordem,1,12
+Laurel,108,75
+Paget,2,12
+Hintze,3,56
+Commercial,72,92
+Mandrake,902,24
+Welch,128,61
+Lawn,67,22
+Leroy,3,76
+North,6085,66
+Clyde Gallagher,1,19
+Leroy,49,98
+Blue Bill Park,9,94
+Prairieview,826,97
+Main,92527,8
+Hoard,545,3
+8th,4,28
+Surrey,364,30
+Harbort,53,54
+Golf Course,4,39
+Southridge,3,37
+Stang,97809,26
+Kingsford,22306,55
+Bobwhite,53121,8
+Bartelt,414,21
+Beilfuss,0,56
+Messerschmidt,34,69
+Daystar,2039,31
+6th,81196,28
+Rigney,4,46
+Morrow,408,3
+Shopko,7900,73
+Sauthoff,55,84
+Steensland,95333,42
+Caliangt,7,4
+Londonderry,49,25
+Transport,93,81
+David,2218,82
+Bluejay,2073,7
+Sage,5238,17
+Meadow Vale,54,58
+Stuart,024,75
+Ohio,6471,60
+Grasskamp,3966,1
+Blackbird,741,80
+Utah,28,40
+Trailsway,25,36
+Roth,2997,14
+Orin,129,72
+Mariners Cove,4722,7
+Lake View,96,62
+Acker,158,16
+Randy,225,67
+Loomis,75,47
+Kim,3,30
+Chinook,373,28
+Center,3,49
+Ronald Regan,507,57
+Lunder,7546,17
+Bashford,0271,68
+Katie,985,43
+Village,2,97
+Ryan,6398,98
+Swallow,4,73
+Steensland,08,49
+Victoria,22,61
+Eastlawn,68105,44
+Dorton,94,67
+Pierstorff,8,58
+Texas,24,72
+Heath,5,21
+Ramsey,2702,91
+7th,42700,66
+Harbort,19,60
+Hudson,54579,54
+Lillian,11,69
+Mcguire,77,36
+American Ash,764,18
+Lawn,22,66
+Charing Cross,9,38
+Fisk,73177,97
+Shasta,24,71
+School,8,12
+Ronald Regan,64613,6
+Claremont,812,41
+Walton,45,35
+Meadow Ridge,1,54
+Manley,67830,76
+Dixon,0,14
+Scott,1,79
+Rusk,70,99
+Arkansas,99401,17
+Rieder,6,6
+Fordem,18,30
+Briar Crest,77320,80
+American Ash,7,16
+Vera,965,79
+Spenser,6257,25
+Holy Cross,03,69
+Dawn,27,58
+Shasta,36723,90
+American Ash,93,16
+Westend,7,20
+Morningstar,7501,97
+Welch,6,67
+Sundown,90963,30
+Sloan,6,30
+Dottie,2070,15
+Truax,42,24
+Golden Leaf,4,87
+Melrose,82,32
+Straubel,9,61
+7th,78,26
+Mitchell,3970,13
+Sullivan,8,84
+Blaine,417,24
+Roth,4819,81
+Mayfield,63336,42
+Moose,804,35
+Erie,126,71
+Pepper Wood,092,61
+Pleasure,2270,11
+2nd,162,79
+Toban,61,81
+Farwell,41338,33
+Luster,7,23
+Fulton,1517,17
+Westend,9303,41
+Porter,124,12
+Sauthoff,47680,96
+Green,063,42
+Menomonie,86457,3
+Warner,8,97
+Swallow,0,55
+Ilene,95,72
+Jenna,586,14
+Manley,33,28
+Lillian,8138,8
+Luster,61057,37
+Calypso,7,63
+Monica,9,25
+Ludington,9,30
+Dunning,58,41
+Duke,9,25
+Westridge,5,5
+Hovde,7,98
+Mallory,9,42
+American Ash,784,18
+School,8296,92
+Kensington,81412,33
+Elgar,6184,62
+Service,0,52
+Stang,393,73
+Shasta,08379,71
+Dorton,718,58
+Russell,77243,37
+Oriole,760,74
+Swallow,462,4
+Farwell,34791,92
+Mitchell,44665,96
+Farwell,42,32
+Transport,54027,12
+Division,48508,34
+Eagan,0,88
+Del Mar,2070,34
+Stone Corner,698,53
+Fallview,21832,99
+Mallory,8164,19
+Namekagon,23,90
+West,9353,72
+Killdeer,25,83
+Carberry,593,12
+Annamark,3,44
+Lawn,4917,87
+Nancy,33151,44
+Judy,2,97
+Gateway,1,43
+Victoria,901,69
+Northridge,1262,32
+Ohio,4,48
+Mayer,1632,60
+Kim,4,70
+1st,4533,13
+7th,64,17
+Sauthoff,7838,38
+Oxford,86540,60
+Jay,09,71
+Esker,1,66
+Norway Maple,059,2
+Mayfield,667,47
+East,08466,11
+Kingsford,0,59
+Randy,4,13
+Westerfield,26280,42
+Rockefeller,2466,91
+Bluestem,88960,26
+Sage,9884,37
+International,9,72
+East,9,20
+Northfield,8,40
+Hayes,9172,23
+Annamark,2,50
+South,575,6
+Morrow,3,48
+Bultman,286,37
+Leroy,558,69
+Clyde Gallagher,1364,23
+Del Mar,53,48
+Kipling,86,7
+Dexter,1,20
+Mosinee,4,70
+Rieder,3,93
+Florence,6,95
+Reinke,97,95
+Green Ridge,58,86
+Gulseth,7,14
+Clyde Gallagher,49,30
+Lerdahl,008,65
+Hagan,345,13
+Cherokee,0,9
+Magdeline,32262,38
+Arapahoe,03,24
+Eagan,8,18
+School,5,31
+Lakewood,6426,9
+Sunfield,43734,64
+Anniversary,743,75
+Darwin,1004,55
+North,26858,26
+Sheridan,68531,1
+Eliot,664,77
+Nelson,872,8
+Ridgeview,6,84
+Granby,7,34
+Fair Oaks,9,40
+Tennessee,1,66
+Westport,0796,96
+Dunning,258,61
+Miller,018,80
+Waxwing,54379,51
+Kipling,902,12
+Ridge Oak,91,75
+Moulton,722,49
+Schmedeman,5,59
+Armistice,44081,98
+Fremont,14711,43
+Iowa,1,12
+Washington,8,85
+Meadow Valley,276,46
+Cambridge,63714,67
+Eastlawn,319,39
+Derek,756,70
+Transport,840,3
+Kennedy,347,56
+Lillian,8,73
+Dawn,7396,70
+Luster,1,75
+Golf,38,17
+Sullivan,081,93
+Hollow Ridge,1,95
+Randy,6604,21
+Ohio,82,75
+Rutledge,321,43
+Hudson,40,48
+Graceland,1,95
+Grayhawk,140,82
+Hayes,06,99
+Park Meadow,5,69
+Victoria,7874,91
+Mifflin,74599,5
+Cottonwood,6,85
+Northport,3,77
+Tennessee,271,70
+Gale,80,87
+Truax,545,77
+Novick,82028,39
+Moland,03,76
+Spenser,29687,96
+Randy,5205,99
+East,2853,32
+Pankratz,7476,40
+Fairview,2,16
+Sunfield,2,96
+Merry,624,97
+Express,38,91
+Continental,97651,21
+Luster,03826,29
+Daystar,611,38
+Southridge,53798,73
+Mesta,77,8
+Reindahl,6831,96
+Colorado,00,47
+Waxwing,1,44
+Pleasure,13032,86
+David,285,46
+Pond,73317,96
+Prairie Rose,3,23
+Roth,71,32
+Summit,97,92
+Esker,049,60
+Declaration,0,88
+Sugar,5,43
+Mendota,4,59
+Debs,6,62
+Reindahl,310,50
+Anthes,85970,77
+Kim,96407,35
+Maple Wood,96,75
+Brickson Park,921,11
+Manufacturers,99,33
+Union,9902,79
+Rutledge,4,83
+Spohn,6180,96
+Katie,62086,75
+Ohio,0757,8
+Atwood,249,16
+Butternut,644,48
+Myrtle,16516,99
+Prairieview,60,42
+Dapin,24,9
+Westport,6,93
+Hovde,9,34
+Schiller,541,52
+Arkansas,45963,22
+Barnett,12,99
+American Ash,5349,87
+Claremont,4449,50
+Pond,9,50
+Granby,21,54
+Banding,49645,99
+Ridge Oak,9807,66
+Scott,36,11
+Merrick,7641,86
+Amoth,9995,39
+Lukken,40,49
+Swallow,48317,57
+Harper,28,83
+Bultman,66145,63
+Veith,0,77
+Declaration,69,20
+Meadow Ridge,4,65
+Stone Corner,7,33
+Gerald,2,54
+Gulseth,3075,12
+Gulseth,3314,32
+Comanche,34,71
+American,9253,21
+Lillian,8,52
+Brickson Park,6571,79
+Canary,63075,92
+Pleasure,8,56
+Weeping Birch,8535,46
+Chinook,4,52
+Armistice,68108,22
+Lerdahl,3,8
+Scofield,4455,27
+Spenser,0,78
+Troy,267,30
+Portage,3,74
+Forest,99965,13
+Drewry,37974,31
+Elmside,515,45
+Esch,62,69
+Shopko,719,20
+Schmedeman,6275,29
+Morningstar,8,96
+Susan,5,47
+Amoth,95,73
+Veith,3223,62
+Rowland,42974,94
+Forest Dale,6,70
+Utah,77180,4
+Fordem,2349,36
+Continental,239,14
+Briar Crest,362,90
+Ruskin,089,30
+Sunbrook,68,33
+Farmco,44979,61
+Sage,46910,17
+Browning,4,58
+Gulseth,2577,4
+Calypso,03,31
+Thierer,9501,14
+West,56414,52
+Sommers,5,47
+Reinke,83,58
+Blue Bill Park,23,45
+Ruskin,31164,96
+Gerald,9,19
+Reinke,55,93
+Atwood,8129,75
+Kedzie,74,29
+Monica,3157,40
+Gale,6626,70
+Huxley,5,39
+Maple Wood,8110,72
+Hallows,47,98
+Mesta,19,65
+Anhalt,5231,88
+Coolidge,837,80
+Drewry,4,16
+Lotheville,7,60
+Northwestern,45078,78
+Sage,5,84
+Crowley,733,55
+Derek,27305,99
+Becker,0,58
+Bunker Hill,8480,52
+Grayhawk,8,30
+South,59,53
+Iowa,522,91
+Sheridan,14,6
+Bunting,0,27
+Forest Run,8478,9
+Logan,65171,66
+Arrowood,6835,1
+Calypso,36,20
+East,74459,81
+Golden Leaf,5,23
+Mcguire,84246,57
+Morning,1,53
+Utah,7,98
+Anhalt,876,33
+Clemons,6233,83
+Southridge,5,43
+Del Mar,89247,7
+Maple Wood,72254,85
+3rd,10947,72
+Hoffman,47,18
+Judy,79,81
+Elka,75,95
+Aberg,4,22
+Spenser,91,28
+Mallard,032,76
+Nevada,158,47
+Gulseth,58476,26
+Reindahl,95963,72
+Dwight,3,72
+Arapahoe,87257,31
+Sullivan,99,2
+Schmedeman,5,49
+Crest Line,29648,91
+Dahle,30056,98
+Larry,52,24
+Thackeray,9419,91
+Longview,98448,40
+Spenser,273,86
+Brown,297,31
+Buhler,2,62
+Utah,67,76
+Morrow,31,5
+Graedel,1,11
+Hermina,77575,37
+La Follette,64488,47
+Springview,857,96
+High Crossing,260,13
+Hoard,409,26
+Montana,93,100
+Almo,1,23
+Sunbrook,1947,88
+Talmadge,3872,24
+Montana,9,55
+Green,238,85
+Arapahoe,23,29
+Sullivan,78,74
+Commercial,06367,39
+Hollow Ridge,80259,38
+Fairfield,64,23
+Killdeer,17,80
+Jackson,67881,90
+David,96438,57
+Summer Ridge,71,62
+Dexter,8,76
+Iowa,483,55
+Mitchell,21914,55
+Almo,64490,60
+Golf,6554,26
+Pine View,36,96
+Barnett,38,45
+Merrick,82658,2
+Bellgrove,2,16
+Ridgeway,8829,54
+Sycamore,0,43
+Knutson,7698,64
+Kings,21,32
+Crescent Oaks,78,25
+Lerdahl,6649,17
+Southridge,382,89
+Stoughton,9,98
+Arkansas,4,2
+Fair Oaks,6863,75
+Anhalt,1622,83
+Lien,41,92
+Elgar,72,16
+Mayfield,41,30
+Bellgrove,668,74
+Linden,88,54
+Macpherson,31002,89
+Mccormick,72,59
+Hansons,1780,93
+Hanover,6,77
+Oxford,21114,47
+Lakewood,68983,23
+Independence,7545,75
+Express,8,33
+Killdeer,11,64
+Warner,005,94
+Fieldstone,6,84
+Mandrake,56,99
+Gerald,1,38
+Milwaukee,824,26
+Michigan,9,18
+Mallard,333,59
+Russell,901,57
+Vermont,91,64
+Elmside,776,20
+Hovde,3,60
+Mockingbird,37555,33
+Chinook,7309,65
+Dunning,922,93
+Kropf,69454,37
+Ilene,94774,2
+Luster,45,80
+Sundown,9869,58
+Jana,0340,55
+Crownhardt,21,95
+Kenwood,69287,87
+Sage,3,89
+Acker,41,79
+Maryland,87,95
+Calypso,1523,74
+Talisman,646,62
+Florence,782,13
+Clarendon,46,5
+Marquette,0,19
+Nova,34429,23
+Logan,421,36
+Pawling,8,78
+Paget,349,82
+Fuller,410,90
+Crescent Oaks,46875,48
+Schiller,33993,44
+Holmberg,2814,70
+Blue Bill Park,6,3
+Trailsway,28824,8
+Summer Ridge,3422,99
+Green,5599,16
+Pine View,853,51
+Continental,5342,71
+Cherokee,56,100
+Hooker,6,85
+Prairie Rose,84,7
+Bayside,31716,91
+Meadow Ridge,742,62
+Superior,09121,64
+Arrowood,046,32
+Thompson,4448,100
+Debra,6,65
+Charing Cross,31372,38
+Main,122,93
+Kenwood,91735,91
+Jana,7,47
+Hagan,842,85
+Northfield,93,82
+Bobwhite,39,66
+Dexter,9045,48
+Veith,163,79
+Porter,90413,58
+Talisman,25,24
+Lighthouse Bay,3,72
+Dottie,9217,67
+Manufacturers,2033,20
+North,4995,51
+Longview,51764,33
+Novick,29,63
+Sycamore,4612,21
+Parkside,55019,63
+Anhalt,7433,58
+Ilene,1,95
+Victoria,263,91
+Nova,14272,51
+Nancy,976,76
+Johnson,705,89
+Fuller,516,86
+Lindbergh,986,76
+1st,474,56
+2nd,9418,2
+Heath,79338,9
+Porter,5132,75
+Shelley,0367,3
+Kim,417,36
+Erie,9,14
+Transport,733,12
+Anzinger,12941,52
+Nobel,077,6
+Mifflin,6359,96
+Grim,33,37
+Golf,066,80
+Troy,04434,37
+Fuller,50,46
+Clove,7485,87
+Glacier Hill,9160,91
+Dwight,3,96
+Memorial,3,45
+Ryan,164,66
+La Follette,96,65
+West,99508,86
+Johnson,017,13
+Summit,7,30
+Dakota,4833,82
+Mifflin,49633,75
+Daystar,476,58
+Annamark,13,20
+Lakeland,2797,72
+Dunning,5,91
+Homewood,571,10
+Commercial,23,89
+Calypso,658,48
+Union,91614,25
+Hudson,2,23
+Melrose,12,19
+Knutson,34998,3
+Scofield,2384,99
+Ridgeway,84372,63
+Mccormick,814,32
+Declaration,8,14
+Grover,77,13
+Badeau,3,10
+Kenwood,5575,14
+Canary,69829,3
+Starling,64987,70
+Green Ridge,4041,34
+School,4,61
+Birchwood,4,25
+Northfield,6798,6
+Maple,8,51
+Coolidge,80,46
+Melody,24491,16
+Service,00,78
+Lukken,44,82
+Fremont,827,77
+Welch,53,21

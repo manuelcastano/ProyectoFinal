@@ -96,11 +96,9 @@ public class Ball implements Comparable<Ball>{
         return (left == null) ? this : left.getMinor();
     }
 	
-	public Ball eliminateBall( String idToEliminate )
+	public Ball eliminateBall( String idToEliminate ) throws EliminateException
     {
-        if( isSheet( ))
-            return null;
-        if( id.compareToIgnoreCase(idToEliminate) == 0 ) {
+        if( id.compareTo(idToEliminate) == 0 ) {
             if(left == null )
                 return right;
             if( right == null )
@@ -111,10 +109,16 @@ public class Ball implements Comparable<Ball>{
             successor.right = right;
             return successor;
         }
-        else if(id.compareToIgnoreCase(idToEliminate) > 0 )
-            left = left.eliminateBall(idToEliminate);
-        else
-            right = right.eliminateBall(idToEliminate);
+        if( isSheet( ))
+            throw new EliminateException();
+        else if(id.compareTo(idToEliminate) > 0 ) {
+            if(left != null)
+            	left = left.eliminateBall(idToEliminate);
+        }
+        else {
+            if(right != null)
+            	right = right.eliminateBall(idToEliminate);
+        }
         return this;
     }
 	

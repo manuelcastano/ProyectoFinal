@@ -4,7 +4,10 @@ import java.util.Comparator;
 
 public class Player extends Person implements Comparator<Player>, Comparable<Player>, Tax, Holiday {
 	
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int yellowCards;
 	private int redCards;
 	private int goals;
@@ -96,15 +99,22 @@ public class Player extends Person implements Comparator<Player>, Comparable<Pla
 	//vaciones por mes 
 	@Override
 	public int day() {
-		
 		int dayBymont = 3;
 		if (goals == 1) {
-			dayBymont=4;
-		}else if  (goals ==2) {
-			dayBymont=5;
+			dayBymont = 4;
+		}else if (goals == 2) {
+			dayBymont = 5;
 		}else {
-			dayBymont=7;
+			dayBymont = 7;
 		}
 		return dayBymont;
+	}
+	
+	public String tableGoals() {
+		return getName() + "\t" + goals;
+	}
+	
+	public String tableAssists() {
+		return getName() + "\t" + assists;
 	}
 }

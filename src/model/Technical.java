@@ -44,11 +44,9 @@ public class Technical extends Person implements Tax , Holiday {
         return (left == null) ? this : left.getMinor();
     }  
 	
-	public Technical eliminateTechnical( String nameTechnical )
+	public Technical eliminateTechnical( String nameTechnical ) throws EliminateException
     {
-        if(isSheet())
-            return null;
-        if(getName().compareToIgnoreCase(nameTechnical) == 0 ) {
+        if(getName().compareTo(nameTechnical) == 0 ) {
             if(left == null )
                 return right;
             if( right == null )
@@ -59,10 +57,18 @@ public class Technical extends Person implements Tax , Holiday {
             successor.right = right;
             return successor;
         }
-        else if(getName().compareToIgnoreCase(nameTechnical) > 0 )
-            left = left.eliminateTechnical(nameTechnical);
-        else
-            right = right.eliminateTechnical(nameTechnical);
+        if(isSheet())
+            throw new EliminateException();
+        else if(getName().compareTo(nameTechnical) > 0 ) {
+            if(left != null) {
+            	left = left.eliminateTechnical(nameTechnical);
+            }
+        }
+        else {
+            if(right != null) {
+            	right = right.eliminateTechnical(nameTechnical);
+            }
+        }
         return this;
     }
 	
