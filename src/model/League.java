@@ -429,13 +429,13 @@ public class League {
 		Stadium stadiums = null;
 		int start = 0;
 		int end = stadium.size()-1;
-		while(start <= end && ! finded) {
+		while(start <= end && !finded) {
 			int middle = (start + end)/2;
 			if (stadium.get(middle).getName().equals(name)) {
 				stadiums = stadium.get(middle);
 				finded =true;
 			}
-			else if (stadium.get(middle).getName().compareTo(name)>0) {
+			else if (stadium.get(middle).getName().compareTo(name) > 0) {
 				end = middle -1;
 			}
 			else {	
@@ -460,7 +460,7 @@ public class League {
 			}
 		}
 		else {
-			return null;
+			throw new NotFindedException();
 		}
 	}
 	
@@ -476,7 +476,7 @@ public class League {
 			}
 		}
 		else {
-			return null;
+			throw new NotFindedException();
 		}
 	}
 	
@@ -501,6 +501,17 @@ public class League {
 			}
 		}
 	}
+	
+	//insertion
+		public void orderStadiumsByName() {
+			for(int i = 1; i < stadium.size(); i++) {
+				for(int j = i; j > 0 && (stadium.get(j-1).getName().compareTo(stadium.get(j).getName())) > 0; j--){
+					Stadium temp = stadium.get(j);
+					stadium.set(j, stadium.get(j-1));
+					stadium.set(j-1, temp);
+				}
+			}
+		}
 	
 	public void orderPlayersByGoals() {
 		for(int i = 0; i < clubs.size(); i++) {

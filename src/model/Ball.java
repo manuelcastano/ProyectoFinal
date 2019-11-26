@@ -124,7 +124,7 @@ public class Ball implements Comparable<Ball>{
 	
 	//recursivo
 	public Ball searchBallById(String idBall) {
-		if (id.compareTo(idBall)==0) {
+		if (id.compareTo(idBall) == 0) {
 			return this;
 		}
 		else if (id.compareTo(idBall) > 0){
@@ -145,26 +145,23 @@ public class Ball implements Comparable<Ball>{
 	}
 	
 	//Recursivo busca por color 
-	public Ball searchBallByColor(String colorr) {
-		if (color.compareTo(colorr)==0) {
+	public Ball searchBallByColor(String colorr) throws NotFindedException {
+		if(color.equals(colorr)) {
 			return this;
 		}
-		else if (color.compareTo(colorr) > 0){
-			if (left != null) {
-				return left.searchBallByColor(colorr);
-			}
-			else {
-				return null;
+		if(left != null) {
+			Ball b = left.searchBallByColor(colorr);
+			if(b != null) {
+				return b;
 			}
 		}
-		else {
-			if (right != null) {
-				return right.searchBallByColor(colorr);	
-			}
-			else {
-				return null;
+		if(right != null) {
+			Ball b = right.searchBallByColor(colorr);
+			if(b != null) {
+				return b;
 			}
 		}
+		return null;
 	}
 	
 	//Actualiza el tipo del balon
@@ -179,5 +176,9 @@ public class Ball implements Comparable<Ball>{
 		else {
 			return (right == null) ? null : right.updateTypeBall(id, newType);
 		}
+	}
+	
+	public String search() {
+		return "Id: "+ id + "\n" + "Type: " + type + "\n" + "Color: " + color;
 	}
 }

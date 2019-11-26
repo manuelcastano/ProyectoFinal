@@ -32,6 +32,8 @@ public class WindowController implements Initializable{
 	private MenuButton delete;
 	@FXML
 	private MenuButton order;
+	@FXML
+	private MenuButton search;
 	private ThreadBall tb;
 	@FXML
 	private AnchorPane operations;
@@ -176,6 +178,24 @@ public class WindowController implements Initializable{
 		});
 		clubName.setOnAction(e -> {
 			orderClubsByName();
+		});
+		search.getItems().clear();
+		MenuItem clubByName = new MenuItem("Club");
+		MenuItem stadiumSearch = new MenuItem("Stadium");
+		MenuItem ballByColor = new MenuItem("Ball by color");
+		MenuItem ballById = new MenuItem("Ball by id");
+		search.getItems().addAll(clubByName, stadiumSearch, ballByColor, ballById);
+		clubByName.setOnAction(e -> {
+			searchClubByName();
+		});
+		stadiumSearch.setOnAction(e -> {
+			searchStadium();
+		});
+		ballByColor.setOnAction(e -> {
+			searchBallByColor();
+		});
+		ballById.setOnAction(e -> {
+			searchBallById();
 		});
 	}
 
@@ -1731,5 +1751,139 @@ public class WindowController implements Initializable{
 		table.setLayoutY(0);
 		table.setFont(new Font(15));
 		operations.getChildren().add(table);
+	}
+	
+	public void searchClubByName() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Button add = new Button("Search");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		Label msg = new Label();
+		msg.setVisible(false);
+		msg.setLayoutX(35);
+		msg.setLayoutY(100);
+		add.setOnAction(e -> {
+			try {
+				league.orderClubsBynames();
+				Club c = league.searchClubByName(nameT.getText());
+				msg.setText(c.table());
+				msg.setVisible(true);
+				error.setVisible(false);
+			} catch (NotFindedException e1) {
+				msg.setVisible(false);
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, add, error, msg);
+	}
+	
+	public void searchStadium() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Button add = new Button("Search");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		Label msg = new Label();
+		msg.setVisible(false);
+		msg.setLayoutX(35);
+		msg.setLayoutY(100);
+		add.setOnAction(e -> {
+			try {
+				league.orderStadiumsByName();
+				Stadium s = league.searchStadiumByName(nameT.getText());
+				msg.setText(s.search());
+				msg.setVisible(true);
+				error.setVisible(false);
+			} catch (NotFindedException e1) {
+				msg.setVisible(false);
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(name, nameT, add, error, msg);
+	}
+	
+	public void searchBallByColor() {
+		operations.getChildren().clear();
+		Label color = new Label("color");
+		color.setLayoutX(0);
+		color.setLayoutY(0);
+		TextField colorT = new TextField();
+		colorT.setLayoutX(50);
+		colorT.setLayoutY(0);
+		Button add = new Button("Search");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		Label msg = new Label();
+		msg.setVisible(false);
+		msg.setLayoutX(35);
+		msg.setLayoutY(100);
+		add.setOnAction(e -> {
+			try {
+				Ball b = league.searchBallByColor(colorT.getText());
+				msg.setText(b.search());
+				msg.setVisible(true);
+				error.setVisible(false);
+			} catch (NotFindedException e1) {
+				msg.setVisible(false);
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(color, colorT, add, error, msg);
+	}
+	
+	public void searchBallById() {
+		operations.getChildren().clear();
+		Label id = new Label("Id");
+		id.setLayoutX(0);
+		id.setLayoutY(0);
+		TextField idT = new TextField();
+		idT.setLayoutX(50);
+		idT.setLayoutY(0);
+		Button add = new Button("Search");
+		add.setLayoutX(35);
+		add.setLayoutY(40);
+		Label error = new Label("The element doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(70);
+		Label msg = new Label();
+		msg.setVisible(false);
+		msg.setLayoutX(35);
+		msg.setLayoutY(100);
+		add.setOnAction(e -> {
+			try {
+				Ball b = league.searchBallById(idT.getText());
+				msg.setText(b.search());
+				msg.setVisible(true);
+				error.setVisible(false);
+			} catch (NotFindedException e1) {
+				msg.setVisible(false);
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(id, idT, add, error, msg);
 	}
 }

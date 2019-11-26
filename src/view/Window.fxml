@@ -72,6 +72,17 @@
                   <MenuItem mnemonicParsing="false" text="Action 2" />
                </items>
             </MenuButton>
+            <Label alignment="CENTER_RIGHT" layoutX="27.0" layoutY="322.0" prefHeight="80.0" prefWidth="82.0" text="¿What do you want to search?" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="search" layoutX="130.0" layoutY="349.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
          </children>
       </AnchorPane>
    </left>

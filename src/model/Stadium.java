@@ -60,4 +60,8 @@ public class Stadium implements Comparable<Stadium>, Comparator<Stadium>{
 	public String stadiumArea() {
 		return name + "\t" + area;
 	}
+	
+	public String search() {
+		return "Name: "+ name + "\n" + "Capacity: " + capacity + "\n" + "Area: " + area;
+	}
 }
