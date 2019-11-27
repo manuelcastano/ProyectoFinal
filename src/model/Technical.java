@@ -101,17 +101,17 @@ public class Technical extends Person implements Tax , Holiday {
 		}
 		if(position.equals("Coach")) {
 			if(this instanceof Coach) {
-				msg += toString();
+				msg += search()+"\n";
 			}
 		}
 		else if(position.equals("Technical Assitant")) {
 			if(this instanceof TechnicalAssistant) {
-				msg += toString();
+				msg += search()+"\n";
 			}
 		}
 		else if(position.equals("Physical Trainer")) {
 			if(this instanceof PhysicalTrainer) {
-				msg += toString();
+				msg += search()+"\n";
 			}
 		}
 		if(right != null) {

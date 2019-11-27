@@ -16,9 +16,12 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.*;
 import threads.ThreadBall;
+import threads.ThreadHour;
+import threads.ThreadTitle;
 
 public class WindowController implements Initializable{
 	
@@ -38,6 +41,10 @@ public class WindowController implements Initializable{
 	@FXML
 	private AnchorPane operations;
 	private League league;
+	@FXML
+	private AnchorPane top;
+	@FXML
+	private Label title;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -185,7 +192,8 @@ public class WindowController implements Initializable{
 		MenuItem ballByColor = new MenuItem("Ball by color");
 		MenuItem ballById = new MenuItem("Ball by id");
 		MenuItem technicalByName = new MenuItem("Technical by name");
-		search.getItems().addAll(clubByName, stadiumSearch, ballByColor, ballById, technicalByName);
+		MenuItem technicalByPosition = new MenuItem("Technicals by position");
+		search.getItems().addAll(clubByName, stadiumSearch, ballByColor, ballById, technicalByName, technicalByPosition);
 		clubByName.setOnAction(e -> {
 			searchClubByName();
 		});
@@ -201,6 +209,18 @@ public class WindowController implements Initializable{
 		technicalByName.setOnAction(e -> {
 			searchTechnicalByName();
 		});
+		technicalByPosition.setOnAction(e -> {
+			searchTechnicalsByPosition();
+		});
+		Canvas hour = new Canvas(200, 60);
+		hour.setLayoutX(0);
+		hour.setLayoutY(0);
+		top.getChildren().add(hour);
+		GraphicsContext gcHour = hour.getGraphicsContext2D();
+		ThreadHour th = new ThreadHour(gcHour);
+		th.start();
+		ThreadTitle threadTitle = new ThreadTitle(title);
+		threadTitle.start();
 	}
 
 	public void addBall() {
@@ -1900,7 +1920,7 @@ public class WindowController implements Initializable{
 		nameT.setLayoutX(50);
 		nameT.setLayoutY(0);
 		Label nameClub = new Label("Name of the club");
-		nameClub.setLayoutX(-30);
+		nameClub.setLayoutX(-50);
 		nameClub.setLayoutY(30);
 		TextField nameClubT = new TextField();
 		nameClubT.setLayoutX(50);
@@ -1918,8 +1938,8 @@ public class WindowController implements Initializable{
 		msg.setLayoutY(130);
 		add.setOnAction(e -> {
 			try {
-				Ball b = league.searchBallById(idT.getText());
-				msg.setText(b.search());
+				Technical t = league.searchTechnicalByName(nameT.getText(), nameClubT.getText());
+				msg.setText(t.search());
 				msg.setVisible(true);
 				error.setVisible(false);
 			} catch (NotFindedException e1) {
@@ -1927,6 +1947,64 @@ public class WindowController implements Initializable{
 				error.setVisible(true);
 			}
 		});
-		operations.getChildren().addAll(id, idT, add, error, msg);
+		operations.getChildren().addAll(name, nameT, nameClub, nameClubT, add, error, msg);
+	}
+	
+	public void searchTechnicalsByPosition() {
+		operations.getChildren().clear();
+		Label position = new Label("Position");
+		position.setLayoutX(0);
+		position.setLayoutY(0);
+		TextField positionT = new TextField();
+		positionT.setLayoutX(50);
+		positionT.setLayoutY(0);
+		Label nameClub = new Label("Name of the club");
+		nameClub.setLayoutX(-50);
+		nameClub.setLayoutY(30);
+		TextField nameClubT = new TextField();
+		nameClubT.setLayoutX(50);
+		nameClubT.setLayoutY(30);
+		Button add = new Button("Search");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		Label msg = new Label();
+		msg.setVisible(false);
+		msg.setLayoutX(35);
+		msg.setLayoutY(130);
+		add.setOnAction(e -> {
+			try {
+				String technicals = league.searchTechnicalsByPosition(positionT.getText(), nameClubT.getText());
+				msg.setText(technicals);
+				msg.setVisible(true);
+				error.setVisible(false);
+			} catch (NotFindedException e1) {
+				msg.setVisible(false);
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(position, positionT, nameClub, nameClubT, add, error, msg);
+	}
+	
+	public void showImage() {
+		Canvas canvas = new Canvas(350, 392);
+		operations.getChildren().clear();
+		operations.getChildren().add(canvas);
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		gc.setStroke(Color.GREY);
+		gc.setLineWidth(5);
+		gc.strokeOval(5, 80, 80, 80);
+		gc.strokeOval(55, 80, 80, 80);
+		gc.strokeOval(105, 80, 80, 80);
+		gc.strokeOval(155, 80, 80, 80);
+		Label l = new Label("Audi");
+		l.setFont(new Font(70));
+		l.setLayoutX(50);
+		l.setLayoutY(150);
+		l.setTextFill(Color.RED);
+		operations.getChildren().add(l);
 	}
 }

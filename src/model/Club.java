@@ -181,7 +181,7 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 			}
 		}
 		else {
-			return null;
+			throw new NotFindedException();
 		}
 	}
 	
@@ -196,7 +196,7 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 			}
 		}
 		else {
-			return null;
+			throw new NotFindedException();
 		}
 	}
 	

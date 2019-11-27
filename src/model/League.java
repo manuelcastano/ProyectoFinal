@@ -545,8 +545,12 @@ public class League {
 		boolean finded = false;
 		for(int i = 0; i < clubs.size() && !finded; i++) {
 			if(clubs.get(i).getName().equals(nameClub)) {
+				finded = true;
 				msg = clubs.get(i).searchTechnicalsByPosition(position);
 			}
+		}
+		if(!finded) {
+			throw new NotFindedException();
 		}
 		return msg;
 	}
