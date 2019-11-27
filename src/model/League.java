@@ -530,8 +530,12 @@ public class League {
 		boolean finded = false;
 		for(int i = 0; i < clubs.size() && !finded; i++) {
 			if(clubs.get(i).getName().equals(nameClub)) {
+				finded = true;
 				t = clubs.get(i).searchTechnicalByName(nameTechnical);
 			}
+		}
+		if(!finded) {
+			throw new NotFindedException();
 		}
 		return t;
 	}

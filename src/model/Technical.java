@@ -202,5 +202,9 @@ public class Technical extends Person implements Tax , Holiday {
 			day = 5;
 		}
 		return day;
-	}	
+	}
+	
+	public String search() {
+		return "Name: " + getName() + "\n" + "Id: " + getId() + "\n" + "Salary: " + getSalary() + "\n" + "Hours worked: " + hoursWorked;
+	}
 }

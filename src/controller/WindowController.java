@@ -184,7 +184,8 @@ public class WindowController implements Initializable{
 		MenuItem stadiumSearch = new MenuItem("Stadium");
 		MenuItem ballByColor = new MenuItem("Ball by color");
 		MenuItem ballById = new MenuItem("Ball by id");
-		search.getItems().addAll(clubByName, stadiumSearch, ballByColor, ballById);
+		MenuItem technicalByName = new MenuItem("Technical by name");
+		search.getItems().addAll(clubByName, stadiumSearch, ballByColor, ballById, technicalByName);
 		clubByName.setOnAction(e -> {
 			searchClubByName();
 		});
@@ -196,6 +197,9 @@ public class WindowController implements Initializable{
 		});
 		ballById.setOnAction(e -> {
 			searchBallById();
+		});
+		technicalByName.setOnAction(e -> {
+			searchTechnicalByName();
 		});
 	}
 
@@ -1873,6 +1877,45 @@ public class WindowController implements Initializable{
 		msg.setVisible(false);
 		msg.setLayoutX(35);
 		msg.setLayoutY(100);
+		add.setOnAction(e -> {
+			try {
+				Ball b = league.searchBallById(idT.getText());
+				msg.setText(b.search());
+				msg.setVisible(true);
+				error.setVisible(false);
+			} catch (NotFindedException e1) {
+				msg.setVisible(false);
+				error.setVisible(true);
+			}
+		});
+		operations.getChildren().addAll(id, idT, add, error, msg);
+	}
+	
+	public void searchTechnicalByName() {
+		operations.getChildren().clear();
+		Label name = new Label("Name");
+		name.setLayoutX(0);
+		name.setLayoutY(0);
+		TextField nameT = new TextField();
+		nameT.setLayoutX(50);
+		nameT.setLayoutY(0);
+		Label nameClub = new Label("Name of the club");
+		nameClub.setLayoutX(-30);
+		nameClub.setLayoutY(30);
+		TextField nameClubT = new TextField();
+		nameClubT.setLayoutX(50);
+		nameClubT.setLayoutY(30);
+		Button add = new Button("Search");
+		add.setLayoutX(35);
+		add.setLayoutY(70);
+		Label error = new Label("The element doesn't exists");
+		error.setVisible(false);
+		error.setLayoutX(35);
+		error.setLayoutY(100);
+		Label msg = new Label();
+		msg.setVisible(false);
+		msg.setLayoutX(35);
+		msg.setLayoutY(130);
 		add.setOnAction(e -> {
 			try {
 				Ball b = league.searchBallById(idT.getText());
