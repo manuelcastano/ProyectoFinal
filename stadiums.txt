@@ -998,3 +998,6 @@ Service,00,78
 Lukken,44,82
 Fremont,827,77
 Welch,53,21
+Camp nou,452,4580.0
+San siro,452,4580.0
+Bernabeu,452,4580.0

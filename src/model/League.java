@@ -380,7 +380,7 @@ public class League {
 	}
 	
 	//bySeleccion
-	public void orderClubsBynames() {
+	public void orderClubsByNames() {
 		for(int i = 0; i < clubs.size()-1; i++) {
 			Club less = clubs.get(i);
 			int aux= i;
@@ -407,13 +407,13 @@ public class League {
 			int middle = (start + end)/2;
 			if (clubs.get(middle).getName().equals(nameClub)) {
 				club = clubs.get(middle);
-				finded =true;
+				finded = true;
 			}
-			else if (stadium.get(middle).getName().compareTo(nameClub)>0) {
+			else if (clubs.get(middle).getName().compareTo(nameClub) > 0) {
 				end = middle -1;
 			}
 			else {
-				start= middle+1;
+				start = middle+1;
 			}
 		}	
 		if(!finded) {

@@ -58,7 +58,7 @@ public class Referee extends Person implements Comparable<Referee>, FineRedCards
 
 	@Override
 	public String toString() {
-		return getName()+","+getId()+","+getSalary()+","+yellowCards + "," + redCards + "," + fouls;
+		return getName() + "," + getId() + "," + getSalary()+","+ yellowCards + "," + redCards + "," + fouls;
 	}
 
 	@Override

@@ -123,7 +123,7 @@ public class Ball implements Comparable<Ball>{
     }
 	
 	//recursivo
-	public Ball searchBallById(String idBall) {
+	public Ball searchBallById(String idBall) throws NotFindedException {
 		if (id.compareTo(idBall) == 0) {
 			return this;
 		}
@@ -131,7 +131,7 @@ public class Ball implements Comparable<Ball>{
 			if (left != null) {
 				return left.searchBallById(idBall);
 			}else {
-				return null;
+				throw new NotFindedException();
 			}
 		}
 		else {
@@ -139,13 +139,13 @@ public class Ball implements Comparable<Ball>{
 				return right.searchBallById(idBall);	
 			}
 			else {
-				return null;
+				throw new NotFindedException();
 			}
 		}
 	}
 	
 	//Recursivo busca por color 
-	public Ball searchBallByColor(String colorr) throws NotFindedException {
+	public Ball searchBallByColor(String colorr) {
 		if(color.equals(colorr)) {
 			return this;
 		}

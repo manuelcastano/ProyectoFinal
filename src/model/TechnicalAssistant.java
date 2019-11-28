@@ -16,9 +16,4 @@ public class TechnicalAssistant extends Technical {
 	public void setPlannedPlays(int plannedPlays) {
 		this.plannedPlays = plannedPlays;
 	}
-	
-	
-	
-	
-
 }

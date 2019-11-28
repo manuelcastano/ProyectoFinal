@@ -1769,7 +1769,7 @@ public class WindowController implements Initializable{
 	
 	public void orderClubsByName() {
 		operations.getChildren().clear();
-		league.orderClubsBynames();
+		league.orderClubsByNames();
 		Label table = new Label(league.clubs());
 		table.setLayoutX(0);
 		table.setLayoutY(0);
@@ -1798,7 +1798,7 @@ public class WindowController implements Initializable{
 		msg.setLayoutY(100);
 		add.setOnAction(e -> {
 			try {
-				league.orderClubsBynames();
+				league.orderClubsByNames();
 				Club c = league.searchClubByName(nameT.getText());
 				msg.setText(c.table());
 				msg.setVisible(true);

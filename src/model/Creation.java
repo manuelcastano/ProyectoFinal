@@ -17,8 +17,4 @@ public class Creation extends MidField {
 	public void setCreatedOccassions(int createdOccassions) {
 		this.createdOccassions = createdOccassions;
 	}
-	
-	
-	
-
 }

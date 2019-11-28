@@ -2,7 +2,6 @@ package model;
 
 public class Forward extends Player{
 
-	
 	private int kicksToGoal;
 
 	public Forward(String name, String id, double salary, int yellowCards, int redCards, int goals, int assists,
@@ -18,7 +17,4 @@ public class Forward extends Player{
 	public void setKicksToGoal(int kicksToGoal) {
 		this.kicksToGoal = kicksToGoal;
 	}
-	
-	
-	
 }

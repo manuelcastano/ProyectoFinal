@@ -17,8 +17,4 @@ public class Recovery extends MidField{
 	public void setRecoveries(int recoveries) {
 		this.recoveries = recoveries;
 	}
-	
-	
-	
-	
 }

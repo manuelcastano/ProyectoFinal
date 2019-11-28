@@ -17,9 +17,4 @@ public class MidField extends Player {
 	public void setPasses(int passes) {
 		this.passes = passes;
 	}
-	
-	
-	
-	
-
 }

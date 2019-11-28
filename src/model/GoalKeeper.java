@@ -2,7 +2,6 @@ package model;
 
 public class GoalKeeper extends Player{
 	
-	
 	private int saved;
 
 	public GoalKeeper(String name, String id, double salary, int yellowCards, int redCards, int goals, int assists,
@@ -18,9 +17,4 @@ public class GoalKeeper extends Player{
 	public void setSaved(int saved) {
 		this.saved = saved;
 	}
-	
-	
-	
-	
-
 }

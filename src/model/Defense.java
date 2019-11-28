@@ -2,7 +2,6 @@ package model;
 
 public class Defense extends Player {
 
-	
 	private int recoveries;
 
 	public Defense(String name, String id, double salary, int yellowCards, int redCards, int goals, int assists,
@@ -11,7 +10,6 @@ public class Defense extends Player {
 		this.recoveries = recoveries;
 	}
 
-	
 	public int getRecoveries() {
 		return recoveries;
 	}
@@ -19,8 +17,4 @@ public class Defense extends Player {
 	public void setRecoveries(int recoveries) {
 		this.recoveries = recoveries;
 	}
-	
-	
-	
-	
 }

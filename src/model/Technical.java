@@ -152,7 +152,7 @@ public class Technical extends Person implements Tax , Holiday {
 	}
 	
 	private int compareTo(Technical newTechnical) {
-		 return getId().compareTo(newTechnical.getId());
+		 return getName().compareTo(newTechnical.getName());
 	}
 
 	public Technical updateWonGames(String nameTechnical, int numberWonGames) {
@@ -214,7 +214,7 @@ public class Technical extends Person implements Tax , Holiday {
 		int dayByMonth = 6*22;
 		if (hoursWorked == dayByMonth ) {
 			day = 3;
-		}else  if (hoursWorked >dayByMonth){
+		}else  if (hoursWorked > dayByMonth){
 			day = 5;
 		}
 		return day;
