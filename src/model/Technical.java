@@ -2,6 +2,10 @@ package model;
 
 public class Technical extends Person implements Tax , Holiday {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1826024285119332171L;
 	private Technical left;
 	private Technical right;
 	private int hoursWorked;
@@ -177,18 +181,30 @@ public class Technical extends Person implements Tax , Holiday {
 	}
 
 	@Override
-	public double Taxes() {
+	public double taxes() {
 		double salaryMin = 828116;
-		double tax=0;
-		if(this.getSalary()>=salaryMin) {
+		double tax = 0;
+		if(this.getSalary() >= salaryMin) {
 			if (hoursWorked <= 100) {
-				tax = this.getSalary()* 0.12;	
+				tax = this.getSalary() * 0.19;	
 			}
 			else{
-				tax = this.getSalary()*0.19;
+				tax = this.getSalary()*0.12;
 			}
 		}
 		return tax;
+	}
+	
+	public String theTaxes() {
+		String msg = "";
+		if(left != null) {
+			msg += left.theTaxes();
+		}
+		msg += getName() + "\t" + taxes() + "\n";
+		if(right != null) {
+			msg += right.theTaxes();
+		}
+		return msg;
 	}
 	
 	//vaciones por mes  
@@ -202,6 +218,18 @@ public class Technical extends Person implements Tax , Holiday {
 			day = 5;
 		}
 		return day;
+	}
+	
+	public String holidays() {
+		String msg = "";
+		if(left != null) {
+			msg += left.holidays();
+		}
+		msg += getName() + "\t" + day() + "\n";
+		if(right != null) {
+			msg += right.holidays();
+		}
+		return msg;
 	}
 	
 	public String search() {

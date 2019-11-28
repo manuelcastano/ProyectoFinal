@@ -799,4 +799,33 @@ public class League {
 		}
 		return msg;
 	}
+	
+	public String theTaxes() {
+		String msg = "";
+		for(int i = 0; i < clubs.size(); i++) {
+			msg += clubs.get(i).theTaxes();
+		}
+		return msg;
+	}
+	
+	public String theHolidays() {
+		String msg = "";
+		for(int i = 0; i < clubs.size(); i++) {
+			msg += clubs.get(i).theHolidays();
+		}
+		return msg;
+	}
+	
+	public String theFines() {
+		String msg = "";
+		for(int i = 0; i < clubs.size(); i++) {
+			msg += clubs.get(i).theFines();
+		}
+		Referee actual = firstReferee;
+		while(actual != null) {
+			msg += actual.theFines() + "\n";
+			actual = actual.getNext();
+		}
+		return msg;
+	}
 }

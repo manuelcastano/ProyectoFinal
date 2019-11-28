@@ -1,6 +1,6 @@
 package model;
 
-public class Referee extends Person implements Comparable<Referee>{
+public class Referee extends Person implements Comparable<Referee>, FineRedCards{
 	
 	private int yellowCards;
 	private int redCards;
@@ -64,5 +64,14 @@ public class Referee extends Person implements Comparable<Referee>{
 	@Override
 	public int compareTo(Referee r) {
 		return yellowCards-r.yellowCards;
+	}
+
+	@Override
+	public int fine() {
+		return 20000 * redCards;
+	}
+	
+	public String theFines() {
+		return getName() + "\t" + fine();
 	}
 }

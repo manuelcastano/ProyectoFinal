@@ -313,4 +313,40 @@ public class Club implements Comparator<Club>, Comparable<Club>, Serializable{
 		}
 		return msg;
 	}
+	
+	public String theTaxes() {
+		String msg = "";
+		Player actual = firstPlayer;
+		while(actual != null) {
+			msg += actual.theTaxes() + "\n";
+			actual = actual.getNext();
+		}
+		if(firstTechnical != null) {
+			msg += firstTechnical.theTaxes();
+		}
+		return msg;
+	}
+	
+	public String theHolidays() {
+		String msg = "";
+		Player actual = firstPlayer;
+		while(actual != null) {
+			msg += actual.holidays() + "\n";
+			actual = actual.getNext();
+		}
+		if(firstTechnical != null) {
+			msg += firstTechnical.holidays();
+		}
+		return msg;
+	}
+	
+	public String theFines() {
+		String msg = "";
+		Player actual = firstPlayer;
+		while(actual != null) {
+			msg += actual.theFines() + "\n";
+			actual = actual.getNext();
+		}
+		return msg;
+	}
 }

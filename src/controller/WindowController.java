@@ -2007,4 +2007,31 @@ public class WindowController implements Initializable{
 		l.setTextFill(Color.RED);
 		operations.getChildren().add(l);
 	}
+	
+	public void theTaxes() {
+		operations.getChildren().clear();
+		Label table = new Label(league.theTaxes());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));
+		operations.getChildren().add(table);
+	}
+	
+	public void theHolidays() {
+		operations.getChildren().clear();
+		Label table = new Label(league.theHolidays());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));
+		operations.getChildren().add(table);
+	}
+	
+	public void theFines() {
+		operations.getChildren().clear();
+		Label table = new Label(league.theFines());
+		table.setLayoutX(0);
+		table.setLayoutY(0);
+		table.setFont(new Font(15));
+		operations.getChildren().add(table);
+	}
 }

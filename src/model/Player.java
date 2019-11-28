@@ -2,7 +2,7 @@ package model;
 
 import java.util.Comparator;
 
-public class Player extends Person implements Comparator<Player>, Comparable<Player>, Tax, Holiday {
+public class Player extends Person implements Comparator<Player>, Comparable<Player>, Tax, Holiday, FineRedCards {
 	
 	/**
 	 * 
@@ -85,12 +85,13 @@ public class Player extends Person implements Comparator<Player>, Comparable<Pla
 	}
 
 	@Override
-	public double Taxes() {
-		double salaryMin =828116;
-		double tax=0;
-		if (this.getSalary()>=salaryMin && this.getSalary() < salaryMin *2) {
-			tax = this.getSalary()* 0.10;
-		}else if (this.getSalary()>=salaryMin*2) {
+	public double taxes() {
+		double salaryMin = 828116;
+		double tax = 0;
+		if (this.getSalary() > salaryMin && this.getSalary() < salaryMin * 2) {
+			tax = this.getSalary() * 0.10;
+		}
+		else if (this.getSalary() >= salaryMin*2) {
 			tax = this.getSalary() * 0.20;
 		}
 		return tax;
@@ -110,11 +111,35 @@ public class Player extends Person implements Comparator<Player>, Comparable<Pla
 		return dayBymont;
 	}
 	
+	public String holidays() {
+		return getName() + "\t" + day();
+	}
+	
 	public String tableGoals() {
 		return getName() + "\t" + goals;
 	}
 	
 	public String tableAssists() {
 		return getName() + "\t" + assists;
+	}
+	
+	public String theTaxes() {
+		return getName() + "\t" + taxes();
+	}
+
+	@Override
+	public int fine() {
+		int fine = 0;
+		if(redCards <= 10) {
+			fine = redCards * 10000;
+		}
+		else {
+			fine = redCards * 50000;
+		}
+		return fine;
+	}
+	
+	public String theFines() {
+		return getName() + "\t" + fine();
 	}
 }
