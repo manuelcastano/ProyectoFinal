@@ -5,3 +5,4 @@ Por otro lado, se pueden ordenar los anteriores elementos por diferentes criteri
 las multas por tarjetas rojas y los impuestos que deben pagar los jugadores, técnicos y árbitros.
 El archivo .zip contiene el código fuente, la documentación del proyecto (diagrama de clases, requerimientos y el diseño de casos de pruebas),
 los test del programa y los archivos .txt que es donde se guardan toda la información del programa para su posterior recuperación.
+Ademas trae el archivo que deberás ejecutar para iniciar el programa, que tiene por nombre Aplicacion.
