@@ -6,11 +6,11 @@ import javafx.scene.image.Image;
 public class ThreadBall extends Thread{
 	
 	private GraphicsContext gc;
-	private boolean stop;
+	
 
-	public ThreadBall(GraphicsContext gc, boolean stop) {
+	public ThreadBall(GraphicsContext gc) {
 		this.gc = gc;
-		this.stop = stop;
+
 	}
 
 	public GraphicsContext getGc() {
@@ -25,7 +25,7 @@ public class ThreadBall extends Thread{
 		Image i = new Image("file:///C:\\Users\\mafes\\Documents\\LaboratoriosAPO\\ProyectoFinal\\balon.png");
 		String direction = "DOWN";
 		int y = 0;
-		while(!stop) {
+		while(true) {
 			gc.clearRect(0, 0, 70, 440);
 			gc.drawImage(i, 0, y);
 			if(direction.equals("DOWN")) {
@@ -49,11 +49,5 @@ public class ThreadBall extends Thread{
 		}
 	}
 
-	public boolean isStop() {
-		return stop;
-	}
-
-	public void setStop(boolean stop) {
-		this.stop = stop;
-	}
+	
 }

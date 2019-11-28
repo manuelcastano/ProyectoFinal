@@ -1,7 +1,10 @@
-/TechnicalTest.class
-/model/
-/PlayerTest.class
+/.DS_Store
 /BallTest.class
 /ClubTest.class
 /LeagueTest.class
+/PlayerTest.class
+/TechnicalTest.class
 /controller/
+/model/
+/threads/
+/view/

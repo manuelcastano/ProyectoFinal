@@ -56,7 +56,7 @@ public class WindowController implements Initializable{
 		Canvas c = new Canvas(70, 440);
 		bp.setRight(c);
 		GraphicsContext gc = c.getGraphicsContext2D();
-		tb = new ThreadBall(gc, false);
+		tb = new ThreadBall(gc);
 		tb.start();
 		MenuItem ball = new MenuItem("ball");
 		MenuItem referee = new MenuItem("referee");
