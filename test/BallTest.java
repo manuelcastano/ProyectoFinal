@@ -49,7 +49,7 @@ class BallTest {
 	}
 	
 	@Test
-	public void testEliminateTechnical() {
+	public void testEliminateBall() {
 		setStage();
 		Ball b1 = new Ball("Black", "Basquet", "464556");
 		Ball b2 = new Ball("Black", "Basquet", "1516561");
